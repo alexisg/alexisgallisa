@@ -18,7 +18,7 @@
 {% block title %}{% parent %}{% endblock %}
 
 {% block content %}
-
+  {% spaceless %}
   {% set data = cms.portfolio %}
 
   {# Next we sort the data by publish_date. The true bit reverses it so it's newest first. Learn more: #}
@@ -27,7 +27,6 @@
 
   {# This is how you set pagination. It's always important to do this after your sort. #}
   {% set data = paginate(data, 5) %}
-
 
   <ul class="list-portfolio grid thirds">
     {% for item in data %}
@@ -38,23 +37,6 @@
       </li>
     {% endfor %}
   </ul>
-
-
-
-  {# Grabs the data to list all the content types (set as multiple) from the CMS. #}
-  {% set types = getTypes() %}
-
-  {# If you have at least content page type, we show a list. #}
-  {% if types|size !== 0 %}
-
-{#     <h3>Content types you've created in the CMS so far.</h3>
-
-    <ul>
-    {% for type in types %}
-      <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
-    {% endfor %}
-    </ul>
- #}
-  {% endif %}
-
+  {% endspaceless %}
 {% endblock %}
+

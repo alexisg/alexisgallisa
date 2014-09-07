@@ -4,5 +4,18 @@
     Creative technical director at CBS Interactive Games.
     Skilled at pushing pixels (web/print), &amp; HTML5/CSS3/Javascript development.
   </p>
+  {% spaceless %}
+    {# Grabs the data to list all the content types (set as multiple) from the CMS. #}
+    {% set types = getTypes() %}
+
+    {# If you have at least content page type, we show a list. #}
+    {% if types|size !== 0 %}
+    {# <ul>
+      {% for type in types %}
+        <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
+      {% endfor %}
+      </ul> #}
+    {% endif %}
+  {% endspaceless %}
 </nav>
 
