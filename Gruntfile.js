@@ -16,9 +16,47 @@ module.exports = function(grunt) {
   // You have been warned!
   grunt.initConfig({
 
+    watch: {
+      sass: {
+        files: ['static/sass/**/*.{scss,sass}'],
+        tasks: ['sass:dist']
+      },
+      autoprefixer: {
+        files: ['static/css/screen.css'],
+        tasks: ['autoprefixer']
+      }
+    },
+
+    sass: {
+      options: {
+        // includePaths: ['bourbon']
+        // includePaths: ['bower_components/compass-mixins/lib']
+        // sourceMap: true
+      },
+      dist: {
+        files: {
+          'static/css/screen.css': 'static/sass/screen.sass'
+        }
+      }
+    },
+
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions', 'ie 9']
+      },
+      dist: {
+        src: 'static/css/screen.css',
+        dest: 'static/css/screen-prefix.css'
+      }
+    }
+
   });
+
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-autoprefixer');
 
   // NEVER REMOVE THESE LINES, OR ELSE YOUR PROJECT MAY NOT WORK
   require('./options/generatorOptions.js')(grunt);
   grunt.loadTasks('tasks');
+
 };
