@@ -1,0 +1,98 @@
+=clearfix
+  &:after
+    content: ''
+    display: table
+    clear: both
+
+.clearfix
+  +clearfix
+
+//------------------------------------------------//
+// $IMAGE REPLACEMENT
+//------------------------------------------------//
+
+=ir
+  display: inline-block
+  background-color: transparent
+  border: 0
+  overflow: hidden
+  font-size: 0
+  text-rendering: optimizeSpeed
+  &:before
+    content: ""
+    display: block
+    width: 0
+    height: 150%
+
+.ir
+  +ir
+
+//------------------------------------------------//
+// $TRUNCATE
+//------------------------------------------------//
+
+=truncate
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+//------------------------------------------------//
+// THIN OUT WHITE FONTS
+//------------------------------------------------//
+
+=font-smooth
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+//------------------------------------------------//
+// Force webkit browsers into hardware acceleration
+//------------------------------------------------//
+
+=forcehw($enable:true)
+  @if ($enable == true)
+    -webkit-backface-visibility: hidden
+  @else
+    -webkit-backface-visibility: visible
+
+//------------------------------------------------//
+// Want some line clamping?
+//
+// Use with caution, its funky and only works in webkit
+//------------------------------------------------//
+
+=line-clamp($lines)
+  overflow: hidden
+  display: -webkit-box
+  -webkit-line-clamp: $lines
+  -webkit-box-orient: vertical
+
+// ------------------------------------------------//
+// MQ Mixin
+// ------------------------------------------------//
+
+=mq-clear
+  float: none !important
+  display: block
+  width: auto !important
+  max-height: initial
+  min-width: initial
+  max-width: initial
+  margin-left: 0
+  margin-right: 0
+  padding-left: 0 !important
+  padding-right: 0 !important
+  text-shadow: none
+  // overflow: hidden
+
+// ------------------------------------------------//
+// CREATE DUMMY CONTENT BLOCK FOR AFTER/BEFORE
+// ------------------------------------------------//
+=content-block
+  content: " "
+  display: block
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+
