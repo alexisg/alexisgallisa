@@ -311,27 +311,107 @@ module.exports.init = function (swig) {
     return timestring;
   };
 
-  var where = function(input, property, filter) {
+  var where = function(input, property) {
     var filtered = [];
 
+    var args =  [].slice.apply(arguments);
+    var filters = args.slice(2);
+
     input.forEach(function(item) {
-      if(typeof filter === 'undefined') {
+      if(filters.length === 0) {
         if(item[property]) // Exists
           filtered.push(item);
       } else {
-        if(item[property] === filter) 
-          filtered.push(item);
+        filters.forEach(function(filter) {
+          if(item[property] === filter) {
+            filtered.push(item);
+            return false;
+          }
+        })
       }
     });
     return filtered;
   }
 
-  var json = function(input) {
-    return JSON.stringify(input);
+  var exclude = function(input, property) {
+    var filtered = [];
+
+    var args =  [].slice.apply(arguments);
+    var filters = args.slice(2);
+
+    input.forEach(function(item) {
+      var addIn = true;
+
+      if(filters.length === 0) {
+        if(!item[property]) // Exists
+          filtered.push(item);
+      } else {
+        filters.forEach(function(filter) {
+          if(item[property] === filter) {
+            addIn = false;
+            return false;
+          }
+        })
+
+        if(addIn) {
+          filtered.push(item);
+        }
+      }
+    });
+    return filtered;
+  }
+  var abs = function(input) {
+    return Math.abs(input);
   };
 
+  var linebreaks = function(input) {
+    var parts = input.replace('\r\n', '\n').replace('\r', '\n').split('\n');
+ 
+    var joined = parts.join('<br/>');
+
+    return '<p>' + joined + '</p>'
+  };
+
+  var jsonP = function(input, callbackName) {
+    if(!callbackName) {
+      callbackName = 'callback';
+    }
+    return '/**/' + callbackName +  '(' + JSON.stringify(input) + ')';
+  };
+
+  var pluralize = function(input, singular, suffix) {
+    if(singular && !suffix) {
+      suffix = singular;
+      singular = '';
+    }
+
+    if(!singular && !suffix) {
+      suffix = 's';
+      singular = '';
+    }
+
+    var number = input;
+
+    if(_.isArray(input)) {
+      number = input.length;
+    }
+
+    if(typeof number !== 'number') {
+      return singular;
+    }
+
+    if(number > 1 || number === 0) {
+      return suffix;
+    } 
+
+    return singular;
+
+    return suffix;
+  }
+
   markdown.safe = true;
-  json.safe = true;
+  linebreaks.safe = true;
+  jsonP.safe = true;
 
   swig.setFilter('upper', upper);
   swig.setFilter('slice', slice);
@@ -347,6 +427,10 @@ module.exports.init = function (swig) {
   swig.setFilter('markdown', markdown);
   swig.setFilter('date', date);
   swig.setFilter('where', where);
+  swig.setFilter('exclude', exclude);
   swig.setFilter('duration', duration);
-  swig.setFilter('json', json);
+  swig.setFilter('abs', abs);
+  swig.setFilter('linebreaks', linebreaks);
+  swig.setFilter('pluralize', pluralize);
+  swig.setFilter('jsonp', jsonP);
 };
