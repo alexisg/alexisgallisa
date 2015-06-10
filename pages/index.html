@@ -28,6 +28,7 @@
   {# This is how you set pagination. It's always important to do this after your sort. #}
   {% set data = paginate(data, 5) %}
 
+  <h4>Portfolio</h4>
   <ul class="list-portfolio grid thirds">
     {% for item in data %}
       <li>
@@ -37,6 +38,27 @@
       </li>
     {% endfor %}
   </ul>
+
+  <h4>Dribbble</h4>
+  <ul id="js-dribble" class="list-portfolio grid quarters"></ul>
   {% endspaceless %}
 {% endblock %}
 
+{% block js_extra %}
+<script>
+    var callback = function (playerShots) {
+        var html = '';
+
+        $.each(playerShots.shots, function (i, shot) {
+            // html += '<li><h3>' + shot.title + '</h3>';
+            html += '<li><a href="' + shot.url + '" class="img">';
+            html += '<img src="' + shot.image_url + '" ';
+            html += 'alt="' + shot.title + '"></a></li>';
+        });
+
+        $('#js-dribble').html(html);
+    };
+
+    $.jribbble.getShotsByPlayerId('alexisg', callback, {page: 1, per_page: 8});
+</script>
+{% endblock %}

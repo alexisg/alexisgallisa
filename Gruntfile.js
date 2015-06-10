@@ -21,10 +21,10 @@ module.exports = function(grunt) {
         files: ['static/sass/**/*.{scss,sass}'],
         tasks: ['sass:dist']
       },
-      autoprefixer: {
-        files: ['static/css/screen.css'],
-        tasks: ['autoprefixer']
-      }
+      // autoprefixer: {
+      //   files: ['static/css/screen.css'],
+      //   tasks: ['autoprefixer']
+      // }
     },
 
     sass: {

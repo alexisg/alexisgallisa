@@ -133,6 +133,9 @@ h4 {
   margin-top: 1.5625rem;
   margin-bottom: 1.5625rem; }
 
+h1, h2, h3, h4 {
+  font-weight: normal; }
+
 p, ul, ol, pre, table, blockquote {
   margin-top: 1.5625rem;
   margin-bottom: 1.5625rem; }
@@ -161,20 +164,25 @@ sub {
   box-sizing: border-box; }
 
 html {
-  height: 100%;
-  width: 100%; }
+  min-height: 100%; }
 
 body {
   background: linear-gradient(-45deg, #4f535f, #272627 90%);
   color: #e6e6e6;
+  padding: 20px 0;
   font-family: "Source Serif Pro", serif;
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
 img {
   max-width: 100%; }
+
+nav {
+  display: table; }
+  nav > * {
+    display: table-cell;
+    vertical-align: middle; }
 
 .logo {
   display: inline-block;
@@ -184,6 +192,7 @@ img {
   font-size: 0;
   text-rendering: optimizeSpeed;
   background: url(/static/images/logo.png) no-repeat;
+  margin: 0 20px 0 0;
   height: 110px;
   width: 290px; }
   .logo:before {

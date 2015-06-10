@@ -8,23 +8,29 @@
   box-sizing: border-box
 
 html
-  height: 100%
-  width: 100%
+  min-height: 100%
 
 body
   background: linear-gradient(-45deg, hsl(225,9%,34%), hsl(300,1%,15%) 90%)
   color: hsl(0,0,90%)
+  padding: 20px 0
   font-family: 'Source Serif Pro', serif
-  height: 100%
-  width: 100%
+  min-height: 100%
   +font-smooth
 
 img
   max-width: 100%
 
+nav
+  display: table
+  > *
+    display: table-cell
+    vertical-align: middle
+
 .logo
   +ir
   background: url(/static/images/logo.png) no-repeat
+  margin: 0 20px 0 0
   height: 110px
   width: 290px
 
