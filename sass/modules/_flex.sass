@@ -1,0 +1,126 @@
+// Flex
+//
+// When you need a generic flex class use .flex. More documentation to come.
+//
+// Markup:
+// <strong>flex</strong>
+// <div class="flex show-grid">
+//   <div class="flex__item">.flex__item 1</div>
+//   <div class="flex__item">.flex__item 2</div>
+//   <div class="flex__item">.flex__item 3</div>
+// </div>
+// <strong>flex flex--rowReverse</strong>
+// <div class="flex flex--rowReverse show-grid">
+//   <div class="flex__item">.flex__item 1</div>
+//   <div class="flex__item">.flex__item 2</div>
+//   <div class="flex__item">.flex__item 3</div>
+// </div>
+// <strong>flex flex--column</strong>
+// <div class="flex flex--column show-grid">
+//   <div class="flex__item">.flex__item 1</div>
+//   <div class="flex__item">.flex__item 2</div>
+//   <div class="flex__item">.flex__item 3</div>
+// </div>
+// <strong>flex flex--columnReverse</strong>
+// <div class="flex flex--columnReverse show-grid">
+//   <div class="flex__item">.flex__item 1</div>
+//   <div class="flex__item">.flex__item 2</div>
+//   <div class="flex__item">.flex__item 3</div>
+// </div>
+//
+//
+//
+// Styleguide 1.4
+
+
+// ===============
+//   Flex classes
+// ===============
+
+.flex
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  list-style: none
+  > *
+    flex: 1 0 auto
+    max-width: 100%
+
+.flex--inline
+  display: inline-flex
+
+.flex--nowrap
+  flex-wrap: nowrap
+
+
+//Stacks inner divs on top of each other
+.flex--column
+  flex-direction: column
+
+// Reverse rows or columns
+.flex--rowReverse
+  flex-direction: row-reverse
+.flex--columnReverse
+  flex-direction: column-reverse
+
+//In case we need to force it tall
+.flex--fullHeight
+  height: 100%
+
+
+// Affects the stretch or position of items inside container
+.flex--verticalCenter
+  align-items: center
+.flex--verticalEnd
+  align-items: flex-end
+.flex--stretch
+  align-items: stretch
+
+.flex--horizontalCenter
+  justify-content: center
+.flex--horizontalEnd
+  justify-content: flex-end
+
+
+// Flex Items
+// ----------
+.flex__item
+  flex: 1 0 auto
+
+.flex__item--noGrow
+  flex-grow: 0
+
+.flex__item--fullHeight
+  height: 100%
+
+
+// Cheat Sheet
+
+// .container {
+//   +display(flex);
+//   display: inline-flex;
+
+//   flex-direction: row;             /* ltr - default */
+//   flex-direction: row-reverse;     /* rtl */
+//   flex-direction: column;          /* top-bottom */
+//   flex-direction(column)-reverse;  /* bottom-top */
+
+//   flex-wrap: nowrap; /* one-line */
+//   flex-wrap: wrap;   /* multi-line */
+
+//   align-items: flex-start; /* vertical-align to top */
+//   align-items: flex-end;   /* vertical-align to bottom */
+//   align-items: center;     /* vertical-align to center */
+//   align-items: stretch;    /* same height on all (default) */
+
+//   justify-content: flex-start; /* horizontal alignment - default */
+//   justify-content: flex-end;
+//   justify-content: center;
+// }
+
+// .container > div {
+//   flex: /* grow, shrink, basis */;
+//   flex: 0 0 40px; /* fixed width */
+//   flex: 0 1 auto; /* dynamic width */
+//   order: 1;
+// }

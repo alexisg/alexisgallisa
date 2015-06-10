@@ -31,7 +31,7 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Serif+Pro' rel='stylesheet' type='text/css'>
 
     <!-- build:css /static/css/screen-min.css -->
-    <link rel="stylesheet" href="/static/css/screen.css"/>
+    <link rel="stylesheet" href="/static/css/alexis.css"/>
     <!-- endbuild -->
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
@@ -45,16 +45,19 @@
       {% include "templates/partials/header.html" %}
 
       {# By default, your inner pages will load into this block. #}
-      <div class="wrapper">
+      <div class="container"><div class="container__content"><div class="container__max">
       {% block content %}{% endblock %}
-      </div>
+      </div></div></div>
 
       {% include "templates/partials/footer.html" %}
 
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
       <!-- build:css /static/js/main-min.js -->
-      <script src="/static/javascript/jquery.jribbble-1.0.1.ugly.js"></script>
+      <script src="/static/js/main.js"></script>
+      <script src="/static/js/jquery.jribbble-1.0.1.ugly.js"></script>
       <!-- endbuild -->
+
+
       {% block js_extra %}{% endblock %}
 
     {% endblock %}

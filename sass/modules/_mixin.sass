@@ -96,3 +96,61 @@
   top: 0
   bottom: 0
 
+// ------------------------------------------------//
+// FOR ADDING THE INPUT PLACEHOLDER STYLES
+// ------------------------------------------------//
+=placeholder()
+  input::-webkit-input-placeholder
+    @content
+  input:-moz-placeholder
+    @content
+  input::-moz-placeholder
+    @content
+  input:-ms-input-placeholder
+    @content
+
+// ------------------------------------------------//
+// CSS ARROW http://codepen.io/kirkas/pen/otqyJ
+// ------------------------------------------------//
+=triangle($dir: right, $color: black, $width: 20px, $height: $width)
+  border-style: inset
+  transform: rotate(360deg)
+  width: 0
+  height: 0
+  border: transparent solid 0
+  @if $dir == top
+    border-bottom-width: $height
+    border-right-width: $width / 2
+    border-left-width: $width / 2
+    border-bottom-color: $color
+  @else if $dir == right
+    border-left-width: $width
+    border-top-width: $height / 2
+    border-bottom-width: $height / 2
+    border-left-color: $color
+  @else if $dir == bottom
+    border-top-width: $height
+    border-right-width: $width / 2
+    border-left-width: $width / 2
+    border-top-color: $color
+  @else if $dir == left
+    border-right-width: $width
+    border-top-width: $height / 2
+    border-bottom-width: $height / 2
+    border-right-color: $color
+  @else if $dir == "top right"
+    border-right-width: $width
+    border-bottom-width: $width
+    border-right-color: $color
+  @else if $dir == "bottom right"
+    border-left-width: $width
+    border-bottom-width: $width
+    border-bottom-color: $color
+  @else if $dir == "bottom left"
+    border-left-width: $width
+    border-top-width: $width
+    border-left-color: $color
+  @else if $dir == "top left"
+    border-right-width: $width
+    border-top-width: $width
+    border-top-color: $color
