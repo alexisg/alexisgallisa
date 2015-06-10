@@ -1,15 +1,5 @@
-// Google Analytics
-(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-e.src='//www.google-analytics.com/analytics.js';
-r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-ga('create','UA-7296564-1"','auto');ga('send','pageview');
-
-
 // On Document Ready
 $(function() {
-
 
   //Force all anchor links that go offsite to open in a new window
   var anchorBlank = function() {
@@ -27,6 +17,7 @@ $(function() {
   anchorBlank();
 
   $('body').addClass('is-ready');
+
   // var callback = function(playerShots) {
   //   var html = '';
   //   $.each(playerShots.shots, function(i, shot) {
