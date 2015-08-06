@@ -13,24 +13,60 @@ $(function() {
         });
       }
     });
+
+    // $('.js-anchor-left').click(function() {
+    //   console.log('left');
+    //   $('#js-fade').removeClass('transition--fadeflipright').addClass('transition--fadeflipleft');
+    // });
+
+    // $('.js-anchor-right').click(function() {
+    //   $('#js-fade').removeClass('transition--fadeflipleft').addClass('transition--fadeflipright');
+    // });
+
+
   };
+
   anchorBlank();
 
-  $('body').addClass('is-ready');
 
-  // var callback = function(playerShots) {
-  //   var html = '';
-  //   $.each(playerShots.shots, function(i, shot) {
-  //     // html += '<li><h3>' + shot.title + '</h3>';
-  //     html += '<li><a href="' + shot.url + '" class="img">';
-  //     html += '<img src="' + shot.image_url + '" ';
-  //     html += 'alt="' + shot.title + '"></a></li>';
-  //   });
-  //   $('#js-dribble').html(html);
-  // };
-  // $.jribbble.getShotsByPlayerId('alexisg', callback, {
-  //   page: 1,
-  //   per_page: 8
-  // });
+  // If not on a touch device use smoothState
+  if (!Modernizr.touch) {
+    'use strict';
+    var $body = $('html, body'),
+    content = $('#js-main').smoothState({
+
+      //smoothState options
+      prefetch: true,
+      pageCacheSize: 8,
+
+      onStart: {
+        duration: 400,
+        render: function($container) {
+          // Scroll page back up
+          $body.animate({ scrollTop: 0 });
+          // Set classes for animation fading
+          $('#js-main')
+            .removeClass('transition-start')
+            .addClass('transition-end');
+        }
+      },
+
+      onAfter: function($container, $newContent) {
+
+        // Add the transition start class for transitions duh
+        $('#js-main')
+          .removeClass('transition-end')
+          .addClass('transition-start');
+        // On new page load, re-initialize the external url anchor function
+        anchorBlank();
+      }
+    }).data('smoothState');
+
+  }
+
+  // Kick off the animation class on first load since smoothstate is not yet available
+  $('#js-main').addClass('transition-start');
+  $('#js-main').smoothState();
+
 
 });

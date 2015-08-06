@@ -11,68 +11,47 @@
 {% extends "templates/partials/base.html" %}
 {# This sets our page <title>. It will append this portfolio's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
 {% block content %}
-  <p><a href="{{ url('portfolio') }}">View a list of all portfolio</a></p>
-  <h1>{{ item.name }}</h1>
-  <ul>
-      <li>
-        <strong>Name: </strong>
-        {{ item.name }}
-      </li>
-      <li>
-        <strong>Create Date: </strong>
-        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
-        {{ item.create_date|date('F d Y') }}
-      </li>
-      <li>
-        <strong>Last Updated: </strong>
-        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
-        {{ item.last_updated|date('F d Y') }}
-      </li>
-      <li>
-        <strong>Publish Date: </strong>
-        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
-        {{ item.publish_date|date('F d Y') }}
-      </li>
-      <li>
-        <strong>Header: </strong>
-        {{ item.header }}
-      </li>
-      <li>
-        <strong>Deck: </strong>
-        {{ item.deck }}
-      </li>
-      <li>
-        <strong>Image: </strong>
-        {# You can pull out a lot more information from the image property. Info here: #}
-        {# http://www.webhook.com/docs/widget-template-reference/#image #}
-        <img src="{{ item.image|imageSize(200) }}" />
-      </li>
-      <li>
-        <strong>Gallery: </strong>
-        {# You can pull out a lot more information from the gallery property. Info here: #}
-        {# http://www.webhook.com/docs/widget-template-reference/#image #}
-        <ul>
-          {% for image in item.gallery %}
-            <li>
-              {# You can get the raw image url by accessing image.url #}
-              <img src="{{ image|imageSize(200,200) }}">
-              <div>{{ image.caption }}</div>
-            </li>
-          {% endfor%}
-        </ul>
-      </li>
-      <li>
-        <strong>WYSIWYG text: </strong>
-        {{ item.wysiwyg_text|safe }}
-      </li>
-      <li>
-        <strong>Preview URL: </strong>
-        {{ item.preview_url }}
-      </li>
-      <li>
-        <strong>Slug: </strong>
-        {{ item.slug }}
-      </li>
+
+  {% set data = cms.portfolio %}
+  {% set data = data|sort('publish_date', true) %}
+  {% set data = paginate(data, 4) %}
+  <ul class="nav-portfolio flex">
+    {% for object in data %}
+      {% if item.preview_url == object.preview_url && data[loop.key - 1] %}
+        <li><a href="{{ url(data[loop.key - 1]) }}" class="js-anchor-left">&laquo; Prev</a></li>
+      {% endif %}
+
+      {% if item.preview_url == object.preview_url && data[loop.key + 1] %}
+        <li class="text-right"><a href="{{ url(data[loop.key + 1]) }}" class="js-anchor-right">Next &raquo;</a></li>
+      {% elseif item.preview_url == object.preview_url && !data[loop.key + 1] %}
+        <li class="text-right"><a href="{{ url(data[0]) }}" class="js-anchor-right">Next &raquo;</a></li>
+      {% endif %}
+    {% endfor %}
   </ul>
+
+  <img src="{{ item.image.url }}" />
+
+  <a href="{{item.website}}">
+    <h2>{{ item.name }}</h2>
+    <p>{{item.website|replace('http://', '') }}</p>
+  </a>
+
+  {% if item.deck %}
+    <h2>{{ item.deck }}</h2>
+  {% endif %}
+
+  <ul>
+    {% for image in item.gallery %}
+      <li>
+        {# You can get the raw image url by accessing image.url #}
+        <img src="{{ image|imageSize(200, 200) }}">
+        <div>{{ image.caption }}</div>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {{ item.wysiwyg_text|safe }}
+
 {% endblock %}

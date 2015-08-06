@@ -41,11 +41,13 @@
   <body>
     {% block body %}
 
-      {% include "templates/partials/header.html" %}
-
       {# By default, your inner pages will load into this block. #}
-      <div class="container"><div class="container__content"><div class="container__max">
-      {% block content %}{% endblock %}
+      <div id="js-main" class="container">
+        {% include "templates/partials/header.html" %}
+        <div class="row"><div id="js-fade" class="col-xs-12 transition--fadein">
+
+        {% block content %}{% endblock %}
+
       </div></div></div>
 
       {% include "templates/partials/footer.html" %}
@@ -53,8 +55,9 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
       <!-- build:js /static/js/main-min.js -->
+      <script src="/static/js/jquery.smoothState.js"></script>
       <script src="/static/js/main.js"></script>
-      <script src="/static/js/jquery.jribbble-1.0.1.ugly.js"></script>
+
       <!-- endbuild -->
 
 

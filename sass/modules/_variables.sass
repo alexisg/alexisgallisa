@@ -1,18 +1,29 @@
 // Baseline variables
-$base-font-size               : 16px !global
-$base-cap-height              : 0.53 !global
-$optical-adjustment-width     : 1.1618 !global
-$base-line-height             : 1.618 !global
-$base-scale                   : 2 !global
-$base-unit                    : $base-line-height / $base-scale * $base-font-size !global
+$base-font-size               : 16px
+$base-cap-height              : 0.53
+$optical-adjustment-width     : 1.1618
+$base-line-height             : 1.618
+$base-scale                   : 2
+$base-unit                    : $base-line-height / $base-scale * $base-font-size
+
+// Modular Scale Variables
+$ms-base                      : $base-font-size
+$ms-ratio                     : $major-second
+$font-size-max                : 5
+$font-size-1                  : ms($font-size-max)
+$font-size-2                  : ms($font-size-max - 1)
+$font-size-3                  : ms($font-size-max - 2)
+$font-size-4                  : ms($font-size-max - 3)
+$font-size-5                  : ms($font-size-max - 4)
+$font-size-6                  : ms($font-size-max - 5)
+$font-size-7                  : ms($font-size-max - 6)
 
 // Grid Variables
 $grid_columns                 : 12
 $grid_gutter_width            : 15px
 $grid_gutter_height           : $base-unit
-$grid_max_width               : 1000px
-$break-sm                     : 768px
-$break-md                     : 1024px
-$break-lg                     : 1200px
-$break-xl                     : 1440px
-$breakpoints                  : ("sm":$break-sm,"md": $break-md,"lg": $break-lg,"xl": $break-xl)
+$grid_max_width               : 640px
+$break-sm                     : 480px
+$break-md                     : 768px
+$break-lg                     : 1024px
+$breakpoints                  : ("sm":$break-sm,"md": $break-md,"lg": $break-lg)

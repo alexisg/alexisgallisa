@@ -1,0 +1,64 @@
+// Use the transition- classes for starting up transitions (not animations) once the scene is loaded
+.transition--fadein
+  opacity: 0
+  transition: opacity .3s ease-in
+  .transition-start &
+    opacity: 1
+
+.transition--fadeflipup
+  opacity: 0
+  transition: transform .6s ease-in, opacity .6s ease-in
+  transform: perspective(2000px) rotateX(-100deg)
+  transform-origin: 50% 82%
+  .transition-start &
+    opacity: 1
+    transition: transform .6s, opacity .6s
+    transition-timing-function: cubic-bezier(0.420, 0.000, 0.420, 1.550)
+    transform: perspective(2000px) rotateX(0deg)
+
+.transition--fadeflipupr
+  transition: transform .6s ease-in, opacity .6s ease-in
+  opacity: 0
+  transform: perspective(2000px) rotateX(100deg)
+  transform-origin: 50% 82%
+  .transition-start &
+    opacity: 1
+    transform: perspective(2000px) rotateX(0deg)
+    transition-timing-function: cubic-bezier(0.420, 0.000, 0.420, 1.550)
+
+.transition--fadeflipright
+  transition: transform .6s ease-in, opacity .6s ease-in
+  opacity: 0
+  transform: perspective(2000px) rotateY(90deg)
+  transform-origin: 50% 0%
+  .transition-start &
+    opacity: 1
+    transform: perspective(2000px) rotateY(0deg)
+    transition-timing-function: ease-in
+
+.transition--fadeflipleft
+  transition: transform .6s ease-in, opacity .6s ease-in
+  opacity: 0
+  transform: perspective(2000px) rotateY(-90deg)
+  transform-origin: 50% 0%
+  .transition-start &
+    opacity: 1
+    transform: perspective(2000px) rotateY(0deg)
+    transition-timing-function: ease-in
+
+.transition--fadedown
+  transition: transform .6s ease-out, opacity .6s ease-out
+  opacity: 0
+  transform: translate3d(0, -100%, 0)
+  .transition-start &
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+// Since we are not using smooth state on touch devices lets kill these scne transitions
+.touch
+  .transition--fadein,
+  .transition--fadeflipup,
+  .transition--fadeflipupr,
+  .transition--fadedown
+    opacity: 1
+    transform: none
