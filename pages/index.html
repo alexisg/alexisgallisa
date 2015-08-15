@@ -27,9 +27,13 @@
       {% set data = data|sort('publish_date', true) %}
       {% set data = paginate(data, 4) %}
 
-      <ul class="grid grid--xs-1-1 grid--sm-1-2">
+      <ul class="grid grid--xs-1-1 grid--sm-1-2 list-portfolio">
         {% for item in data %}
-          <li><a href="{{ url(item) }}"><img src="{{ item.image|imageCrop(580,580) }}" /></a></li>
+          <li>
+            <a href="{{ url(item) }}">
+              <div class="js-video-hold" data-video="{{item.video_small.url}}" data-img="{{ item.image|imageCrop(580,580) }}"></div>
+            </a>
+          </li>
         {% endfor %}
       </ul>
 

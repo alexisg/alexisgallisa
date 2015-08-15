@@ -1,6 +1,6 @@
 // Grid
 //
-// Twitch uses a mobile first 12 column fluid grid system based on flexbox FTW.
+// Mobile first 12 column fluid grid system based on flexbox FTW.
 // Sizing of cells are set at the child level when used inside the parent .row class or set globally at the parent level when using the parent .grid with .grid--viewportsize-colsize class
 //
 // Markup:
@@ -62,10 +62,11 @@
 
 [class*="col-"],.grid > *
   flex: 0 0 auto
+  margin: 0
   padding: 0 $grid_gutter_width
 
 .grid > *
-  padding-bottom: guv(1)
+  padding-bottom: $grid_gutter_height * 2
 
 // Create the .col-columns base sizes
 @for $i from 1 through $grid_columns

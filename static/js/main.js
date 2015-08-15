@@ -28,6 +28,19 @@ $(function() {
 
   anchorBlank();
 
+  // Video loader if you are on not on a touch device
+  var videoLoad = function() {
+    $('.js-video-hold').each(function() {
+      var url_video = $(this).attr("data-video");
+      if (!Modernizr.touch && Modernizr.video.h264 && url_video) {
+        $(this).append("<video autoplay loop><source src='" + $(this).attr("data-video") + " 'type='video/mp4'></video>");
+      } else {
+        $(this).append("<img src='" + $(this).attr("data-img") + " ' />");
+      }
+    })
+  };
+
+  videoLoad();
 
   // If not on a touch device use smoothState
   if (!Modernizr.touch) {
@@ -59,6 +72,7 @@ $(function() {
           .addClass('transition-start');
         // On new page load, re-initialize the external url anchor function
         anchorBlank();
+        videoLoad();
       }
     }).data('smoothState');
 
@@ -67,6 +81,8 @@ $(function() {
   // Kick off the animation class on first load since smoothstate is not yet available
   $('#js-main').addClass('transition-start');
   $('#js-main').smoothState();
+
+
 
 
 });
