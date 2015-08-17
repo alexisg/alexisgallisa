@@ -20,7 +20,7 @@
 
 body
   background: hsl(220, 20%, 20%)
-  color: #9d999e
+  color:hsl(220, 0%, 90%)
   font-family: 'lato',sans-serif
   font-weight: 300
   text-shadow: 0 1px 0px rgba(0, 0, 0, 0.35)
@@ -34,11 +34,7 @@ img,video
 // ---------------------------
 
 h1,h2,h3,h4,h5
-  color: hsl(0, 0%, 90%)
   font-weight: 400
-
-p
-  color: hsl(0, 0%, 80%)
 
 a
   color: hsl(220, 25%, 75%)
@@ -80,7 +76,7 @@ ul
 .portrait
   border-radius: 50%
   display: block
-  margin: guv(-1) auto 0
+  margin: guv(-1) auto guv(1)
   max-height: 120px
   max-width: 120px
   overflow: hidden
@@ -105,6 +101,7 @@ ul
     transition: all .15s
 
 .list-portfolio
+  margin: guv(2) 0
   text-align: center
   a,img,video
     display: block
