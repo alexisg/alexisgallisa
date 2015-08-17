@@ -19,12 +19,26 @@
 
 
 body
-  background: hsl(220, 20%, 20%)
   color:hsl(220, 0%, 90%)
   font-family: 'lato',sans-serif
   font-weight: 300
   text-shadow: 0 1px 0px rgba(0, 0, 0, 0.35)
   padding: 30px 0
+  background: hsl(220, 20%, 20%)
+  background: linear-gradient(150deg, hsl(260, 25%, 25%), hsl(220, 25%, 25%), hsl(190, 25%, 25%), hsl(220, 25%, 25%), hsl(260, 25%, 25%))
+  background-size: 1000% 1000%
+  .no-touch &
+    animation: bgbody 10s ease infinite
+
+  @keyframes bgbody
+    0%
+      background-position:50% 0%
+    50%
+      background-position:50% 100%
+    100%
+      background-position:50% 0%
+
+
 
 img,video
   max-width: 100%
