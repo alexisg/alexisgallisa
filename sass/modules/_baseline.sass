@@ -17,13 +17,9 @@ html
 h1
   margin: 0 //reset normalize
   +align-to-baseline($font-size-1)
-  + p
-    padding-top: 0
 
 h2
   +align-to-baseline($font-size-2)
-  + p
-    padding-top: 0
 
 h3
   +align-to-baseline($font-size-3)
@@ -38,6 +34,10 @@ p
   +align-to-baseline($offset-bottom: 1)
   + h2, + h3, + h4
     margin-top: guv(2)
+
+h1,h2,h3,h4,h5
+  + p
+    padding-top: 0
 
 
 // Horizontal Rule

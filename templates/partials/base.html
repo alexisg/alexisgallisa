@@ -40,10 +40,10 @@
   </head>
   <body>
     {% block body %}
+      <div class="wrapper">
+      {% include "templates/partials/header.html" %}
 
-      {# By default, your inner pages will load into this block. #}
       <div id="js-main" class="container">
-        {% include "templates/partials/header.html" %}
         <div class="row"><div id="js-fade" class="col-xs-12 transition--fadein">
 
         {% block content %}{% endblock %}
@@ -51,7 +51,7 @@
       </div></div></div>
 
       {% include "templates/partials/footer.html" %}
-
+      </div>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
       <!-- build:js /static/js/main-min.js -->

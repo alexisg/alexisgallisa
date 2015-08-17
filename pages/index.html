@@ -21,7 +21,7 @@
   {% spaceless %}
 
       {# <div class="portrait"><img src="/static/images/pic300.jpg"></div> #}
-      <p class="text-center">Design/front-end lead; specializing in web/mobile design, CSS frameworks, responsive layouts, JS interactions, large site templating and content management system implementations.</p>
+      <p class="text-center">Design/front-end lead; specializing in web/mobile design, CSS frameworks, responsive layouts, JS interactions, large site templating and cms implementations.</p>
 
       {% set data = cms.portfolio %}
       {% set data = data|sort('publish_date', true) %}
@@ -30,8 +30,12 @@
       <ul class="grid grid--xs-1-1 grid--sm-1-2 list-portfolio">
         {% for item in data %}
           <li>
-            <a href="{{ url(item) }}">
-              <div class="js-video-hold" data-video="{{item.video_small.url}}" data-img="{{ item.image|imageCrop(580,580) }}"></div>
+            <a href="{{ item.website }}">
+              <div class="js-video-hold aspect aspect--square" data-video="{{item.video_small.url}}" data-img="{{ item.image|imageCrop(580,580) }}"></div>
+              <h4>{{item.name}}</h4>
+              {% if item.deck %}
+                <p>{{item.deck}}</p>
+              {% endif %}
             </a>
           </li>
         {% endfor %}
@@ -42,7 +46,7 @@
       <a href="http://www.twitch.tv/year/2014">Twitch 2014 Retrospective</a>
       <a href="http://www.gamespot.com">GameSpot <span>(Creative Techincal Director 2012-2014)</span></a>
       <a href="http://www.giantbomb.com">Giant Bomb <span>(Creative Techincal Director 2011-2014)</span></a>
-      <a href="http://www.gamefaqs.com">GameFaqs <span>(CSS Redesign 2013)</span></a>
+      <a href="http://www.gamefaqs.com">GameFaqs <span>(CSS Redesign 2014)</span></a>
       <a href="http://www.plex.tv">Plex <span>(Logo, App Icons 2008-2012)</span></a>
  #}
       <nav class="flex flex--inline flex--horizontalCenter list-networks">
