@@ -1,7 +1,7 @@
 // Use the transition- classes for starting up transitions (not animations) once the scene is loaded
 .transition--fadein
   opacity: 0
-  transition: opacity .3s ease-in
+  transition: opacity .3s ease-in .6s
   .transition-start &
     opacity: 1
 
@@ -45,6 +45,14 @@
     opacity: 1
     transform: perspective(2000px) rotateY(0deg)
     transition-timing-function: ease-in
+
+.transition--fadeup
+  transition: transform .6s ease-out .6s, opacity .6s ease-out .6s
+  opacity: 0
+  transform: translate3d(0, 30px, 0)
+  .transition-start &
+    opacity: 1
+    transform: translate3d(0, 0, 0)
 
 .transition--fadedown
   transition: transform .6s ease-out, opacity .6s ease-out
