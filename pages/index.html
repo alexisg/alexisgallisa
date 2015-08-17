@@ -5,8 +5,11 @@
 {% block content %}
   {% spaceless %}
 
-      <div class="portrait"><img src="/static/images/pic300.jpg"></div>
-      <h2 class="text-center">Design/front-end lead for a bunch of stuff</h2>
+      <div class="portrait">
+        <div class="portrait__img"><img src="/static/images/pic300.jpg"></div>
+        <span class="portrait__icon icon icon-andre"></span>
+      </div>
+      <h2 class="text-center">Design/front-end lead for a bunch of stuff </h2>
       <p class="text-center">Specializing in web/mobile design, CSS frameworks, responsive layouts, JS interactions, large site templating and content management implementations.</p>
 
       {% set data = cms.portfolio %}

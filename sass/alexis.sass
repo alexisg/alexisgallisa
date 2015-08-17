@@ -74,12 +74,34 @@ ul
   white-space: nowrap
 
 .portrait
+  position: relative
+  &:hover .icon-andre
+    background-position: 0 -70px
+
+.portrait__img
   border-radius: 50%
   display: block
   margin: guv(-1) auto guv(1)
   max-height: 120px
   max-width: 120px
   overflow: hidden
+
+.portrait__icon
+  position: absolute
+  left: 50%
+  bottom: -14px
+  margin-left: 36px
+
+.icon
+  display: inline-block
+  overflow: hidden
+
+.icon-andre
+  background: url(/static/images/icn-andre-24x120.png) 0 0
+  width: 24px
+  height: 46px
+  &:hover
+    background-position: 0 -70px
 
 .list-networks
   margin: 0 auto
@@ -113,9 +135,3 @@ ul
   p
     font-size: .75rem
     opacity: .75
-
-.nav-portfolio
-  position: fixed
-  top: 50%
-  left: guv(1)
-  right: guv(1)
