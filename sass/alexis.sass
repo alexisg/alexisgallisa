@@ -29,19 +29,6 @@ body
   font-weight: 300
   text-shadow: 0 1px 0px rgba(0, 0, 0, 0.35)
   padding: 30px 0
-  // .no-touch &
-  //   animation: bgbody 5s ease infinite
-
-  // @keyframes bgbody
-  //   0%
-  //     background-position:50% 0%
-  //     background: hsl(210, 20%, 20%)
-  //   50%
-  //     background-position:50% 100%
-  //     background: hsl(210, 20%, 25%)
-  //   100%
-  //     background-position:50% 0%
-  //     background: hsl(210, 20%, 20%)
 
 img,video
   max-width: 100%
@@ -102,12 +89,13 @@ ul
     background-position: 0 -70px
 
 .portrait__img
-  border-radius: 50%
+  border-radius: 100%
   display: block
-  margin: guv(-1) auto guv(1)
+  margin: guv(-2) auto guv(1)
   max-height: 120px
   max-width: 120px
   overflow: hidden
+  position: relative
 
 .portrait__icon
   position: absolute
@@ -150,12 +138,13 @@ ul
   text-align: center
   a,img,video
     display: block
-  img,video
-    border: 1px solid hsla(220, 50%, 5%,.25)
-    box-shadow: hsla(220, 50%, 5%,.5) 0 30px 25px -20px
-  .aspect
-    background: black
-    margin-bottom: guv(1)
+  a:hover
+    cursor: pointer
   p
     font-size: .75rem
     opacity: .75
+
+.list-portfolio__media
+  background: black
+  box-shadow: hsla(220, 50%, 5%,.5) 0 30px 25px -20px
+  margin-bottom: guv(1)

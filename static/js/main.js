@@ -30,7 +30,7 @@ $(function() {
 
   // Video loader if you are on not on a touch device
   var videoLoad = function() {
-    $('.js-video-hold').each(function() {
+    $('.js-media-hold').each(function() {
       var url_video = $(this).attr("data-video");
       if (!Modernizr.touch && Modernizr.video.h264 && url_video) {
         $(this).append("<video autoplay loop class='aspect__fill'><source src='" + $(this).attr("data-video") + " 'type='video/mp4'></video>");
