@@ -74,7 +74,7 @@ ul
 // Logo, portrait and list
 // ---------------------------
 .logo
-  background: url('/static/images/logo@x2.png') no-repeat 0 0
+  background: url('/static/images/logo.png') no-repeat 0 0
   background-size: 100% 100%
   margin: 0 auto guv(1)
   overflow: hidden
@@ -82,6 +82,8 @@ ul
   height: 100px
   width: 290px
   white-space: nowrap
+  +retina
+    background-image: url('/static/images/logo@x2.png') no-repeat 0 0
 
 .portrait
   position: relative
@@ -108,12 +110,14 @@ ul
   overflow: hidden
 
 .icon-andre
-  background: url(/static/images/icn-andre-24x120.png) 0 0
+  background: url('/static/images/icn-andre.png') 0 0
+  background-size: 24px auto
   width: 24px
   height: 46px
   &:hover
     background-position: 0 -70px
-
+  +retina
+    background-image: url('/static/images/icn-andre@2x.png')
 .list-networks
   margin: 0 auto guv(2)
   text-align: center
