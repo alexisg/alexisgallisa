@@ -105,6 +105,10 @@ ul
   bottom: -14px
   margin-left: 36px
 
+
+// ---------------------------
+// Icons
+// ---------------------------
 .icon
   display: inline-block
   overflow: hidden
@@ -118,17 +122,22 @@ ul
     background-position: 0 -70px
   +retina
     background-image: url('/static/images/icn-andre@2x.png')
+
+// ---------------------------
+// List of networks in footer
+// ---------------------------
 .list-networks
   margin: 0 auto guv(2)
   text-align: center
   width: 100%
-  a
-    font-size: .75rem
-    flex: 0 0 auto
-    margin: 0 guv(2)
-    &:hover
-      svg
-        transform: scale(1.2)
+
+.list-networks__item
+  font-size: .75rem
+  flex: 0 0 auto
+  margin: 0 guv(2)
+  &:hover
+    svg
+      transform: scale(1.2)
   svg
     height: 36px
     width: 36px
@@ -137,6 +146,9 @@ ul
     display: block
     transition: all .15s
 
+// ---------------------------
+// Main portfolio grid
+// ---------------------------
 .list-portfolio
   margin: guv(2) 0
   text-align: center

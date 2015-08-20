@@ -1,27 +1,21 @@
+{% spaceless %}
 <nav>
-
    <a href="/"><h1 class="logo">Alexis Gallis&aacute;</h1></a>
 
   {# Grabs the data to list all the content types (set as multiple) from the CMS. #}
   {% set types = getTypes() %}
   {# If you have at least content page type, we show a list. #}
   {% if types|size !== 0 %}
-{#     <ul class="flex flex--inline">
+  {#
+    <ul class="flex flex--inline">
       <li><a href="/">Home</a></li>
       {% for type in types %}
         <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
       {% endfor %}
-    </ul> #}
+    </ul>
+  #}
   {% endif %}
-
-  {# {% set data = cms.portfolio %}
-  {% set data = data|sort('publish_date', true) %}
-  <dl class="flex flex--inline flex--nowrap">
-    <dt><a href="{{ url('portfolio') }}">Portfolio</a></dt>
-    {% for object in data %}
-      <dd><a href="{{ url(object) }}">{{ object.name }}</a></dd>
-    {% endfor %}
-  </dl> #}
 
 </nav>
 
+{% endspaceless %}
