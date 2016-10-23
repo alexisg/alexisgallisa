@@ -530,7 +530,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
                 removeDirectory('.static-old', function() {
                   fs.unlinkSync('.reset.zip');
 
-                  self.init(config.get('webhook').siteName, config.get('webhook').secretKey, true, config.get('webhook').firebase, function() {
+                  self.init(config.get('webhook').siteName, config.get('webhook').secretKey, true, config.get('webhook').firebase, config.get('webhook').server, function() {
                     callback();
                   });
                 });
@@ -636,13 +636,14 @@ module.exports.generator = function (config, options, logger, fileParser) {
             return true;
           }
 
+          var forceBuild = false;
           var newFile = file.replace('pages', './.build');
 
           var dir = path.dirname(newFile);
           var filename = path.basename(newFile, path.extname(file));
           var extension = path.extname(file);
 
-          if(path.extname(file) === '.html' && filename !== 'index' && path.basename(newFile) !== '404.html' && file.indexOf('.raw.html') === -1) {
+          if(extension === '.html' && filename !== 'index' && path.basename(newFile) !== '404.html' && file.indexOf('.raw.html') === -1 && extension !== 'tpl') {
             dir = dir + '/' + filename;
             filename = 'index';
           }
@@ -651,9 +652,15 @@ module.exports.generator = function (config, options, logger, fileParser) {
             filename = filename.slice(0, filename.length - 4);
           }
 
-          newFile = dir + '/' + filename + path.extname(file);
+          if(extension === '.tpl') {
+            extension = filename.substr(filename.length - 5, filename.length - 1);
+            filename = filename.slice(0, filename.length - 5);
+            forceBuild = true;
+          }
 
-          if(extension === '.html' || extension === '.xml' || extension === '.rss' || extension === '.xhtml' || extension === '.atom' || extension === '.txt') { 
+          newFile = dir + '/' + filename + extension;
+
+          if(forceBuild || extension === '.html' || extension === '.xml' || extension === '.rss' || extension === '.xhtml' || extension === '.atom' || extension === '.txt') { 
             writeTemplate(file, newFile);
           } else {
             mkdirp.sync(path.dirname(newFile));
@@ -1413,12 +1420,12 @@ module.exports.generator = function (config, options, logger, fileParser) {
    * @param  {Boolean}   copyCms   True if the CMS should be overwritten, false otherwise
    * @param  {Function}  done      Callback to call when operation is done
    */
-  this.init = function(sitename, secretkey, copyCms, firebase, done) {
+  this.init = function(sitename, secretkey, copyCms, firebase, server, done) {
     var oldConf = config.get('webhook');
 
     var confFile = fs.readFileSync('./libs/.firebase.conf.jst');
 
-    if(firebase) {
+    if(firebase || server) {
       confFile = fs.readFileSync('./libs/.firebase-custom.conf.jst');
     }
 
@@ -1429,7 +1436,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
     }
 
     // TODO: Grab bucket information from server eventually, for now just use the site name
-    var templated = _.template(confFile, { secretKey: secretkey, siteName: sitename, firebase: firebase, embedlyKey: oldConf.embedly || 'your-embedly-key', serverAddr: oldConf.server || 'your-server-address', noSearch: noSearch });
+    var templated = _.template(confFile, { secretKey: secretkey, siteName: sitename, firebase: firebase, embedlyKey: oldConf.embedly || 'your-embedly-key', serverAddr: oldConf.server || server || 'your-server-address', noSearch: noSearch, imageproxy: oldConf.imageproxy || null });
 
     fs.writeFileSync('./.firebase.conf', templated);
 
@@ -1583,6 +1590,7 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
   this.enableProduction = function() {
     productionFlag = true;
+    swig.setDefaults({ cache: 'memory' });
   }
 
   return this;
