@@ -32,6 +32,7 @@
     <!-- endbuild -->
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     {% block head_extra %}{% endblock %}
   </head>
 
@@ -43,7 +44,7 @@
     <!-- SVG Use sprite -->
     {% include "static/images/sprite.svg" %}
 
-    <div id="js-main" class="container">
+    <div id="js-main" class="container" data-page="home">
       <div class="row">
         <div class="col-xs-12">
           {% include "templates/partials/header.html" %}
@@ -56,32 +57,12 @@
       </div></div>
     </div>
 
-    <!-- Footer -->
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
     <!-- build:js /static/js/main-min.js -->
     <script src="/static/js/jquery.smoothState.js"></script>
     <script src="/static/js/main.js"></script>
     <!-- endbuild -->
 
     {% block js_extra %}{% endblock %}
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-63995003-1', 'auto');
-      ga('send', 'pageview');
-
-      var trackOutboundLink = function(url) {
-        ga('send', 'event', 'outbound', 'click', url, {
-          'transport': 'beacon',
-          'hitCallback': function(){document.location = url;}
-        });
-      }
-    </script>
 
     <!-- =^.^= -->
 
