@@ -28,9 +28,6 @@
 //   <div class="flex__item">.flex__item 3</div>
 // </div>
 //
-//
-//
-// Styleguide 4
 
 
 // ===============
@@ -43,7 +40,7 @@
   flex-wrap: wrap
   list-style: none
   > *
-    flex: 1 0 auto
+    flex: 0 1 auto
     max-width: 100%
 
 .flex--inline
@@ -51,7 +48,6 @@
 
 .flex--nowrap
   flex-wrap: nowrap
-
 
 //Stacks inner divs on top of each other
 .flex--column
@@ -67,60 +63,53 @@
 .flex--fullHeight
   height: 100%
 
-
 // Affects the stretch or position of items inside container
+// All items will align vertically in each row.
 .flex--verticalCenter
   align-items: center
+// All items will align to the bottom of each row.
 .flex--verticalEnd
   align-items: flex-end
+// All items will stretch to fill all available space
 .flex--stretch
   align-items: stretch
 
+// More info on justify
+// https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 .flex--horizontalCenter
   justify-content: center
 .flex--horizontalEnd
   justify-content: flex-end
-
+.flex--spaceBetween
+  justify-content: space-between
 
 // Flex Items
 // ----------
 .flex__item
-  flex: 1 0 auto
-
+  flex: 0 1 auto
+// By default our flex items are set to not grow as the W3 standard
+.flex__item--grow
+  flex-grow: 1
 .flex__item--noGrow
   flex-grow: 0
+// Opposite of above
+.flex__item--noShrink
+  flex-shrink: 0
+// Alight to the right
+.flex__item--end
+  align-self: flex-end
 
-.flex__item--fullHeight
-  height: 100%
+// Flex ordering by media queries
+// ------------------------------
+// This allows us to set flex-order in a mobile first fashion.
+// Suggested use if you need to overwrite is to set the mobile first
+// option first (--xs) and then reset for desktop use with our other breakpoints
+@for $i from 0 through 4
+  .flex__item--order-xs-#{$i}
+    order: $i
 
-
-// Cheat Sheet
-
-// .container {
-//   +display(flex);
-//   display: inline-flex;
-
-//   flex-direction: row;             /* ltr - default */
-//   flex-direction: row-reverse;     /* rtl */
-//   flex-direction: column;          /* top-bottom */
-//   flex-direction(column)-reverse;  /* bottom-top */
-
-//   flex-wrap: nowrap; /* one-line */
-//   flex-wrap: wrap;   /* multi-line */
-
-//   align-items: flex-start; /* vertical-align to top */
-//   align-items: flex-end;   /* vertical-align to bottom */
-//   align-items: center;     /* vertical-align to center */
-//   align-items: stretch;    /* same height on all (default) */
-
-//   justify-content: flex-start; /* horizontal alignment - default */
-//   justify-content: flex-end;
-//   justify-content: center;
-// }
-
-// .container > div {
-//   flex: /* grow, shrink, basis */;
-//   flex: 0 0 40px; /* fixed width */
-//   flex: 0 1 auto; /* dynamic width */
-//   order: 1;
-// }
+@each $slug, $size in $breakpoints
+  @media (min-width: #{$size})
+    @for $i from 1 through 4
+      .flex__item--order-#{$slug}-#{$i}
+        order: $i

@@ -34,13 +34,23 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     {% block head_extra %}{% endblock %}
   </head>
+
+  {% set data = cms.portfolio %}
+  {% set data = data|sort('publish_date', true) %}
+  {% set data = paginate(data, 6) %}
+
   <body>
     <!-- SVG Use sprite -->
     {% include "static/images/sprite.svg" %}
 
     <div id="js-main" class="container">
-      <div class="row"><div id="js-fade" class="col-xs-12 transition--fadeup">
-        {% include "templates/partials/header.html" %}
+      <div class="row">
+        <div class="col-xs-12">
+          {% include "templates/partials/header.html" %}
+        </div>
+      </div>
+
+      <div class="row"><div id="js-fade" class="col-xs-12 transition transition--fadein">
         {% block content %}{% endblock %}
         {% include "templates/partials/footer.html" %}
       </div></div>

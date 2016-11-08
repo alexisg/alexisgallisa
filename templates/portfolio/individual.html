@@ -13,10 +13,6 @@
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 
 {% block content %}
-
-  {% set data = cms.portfolio %}
-  {% set data = data|sort('publish_date', true) %}
-  {% set data = paginate(data, 4) %}
   <ul class="nav-portfolio flex">
     {% for object in data %}
       {% if item.preview_url == object.preview_url && data[loop.key - 1] %}
@@ -31,7 +27,7 @@
     {% endfor %}
   </ul>
 
-  <img src="{{ item.image.url }}" />
+  <div class="js-media-hold list-portfolio__media aspect aspect--square" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(580,580) }}"></div>
 
   <a href="{{item.website}}">
     <h2>{{ item.name }}</h2>

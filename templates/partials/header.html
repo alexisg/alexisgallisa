@@ -1,21 +1,12 @@
 {% spaceless %}
 <nav>
-   <a href="/"><h1 class="logo">Alexis Gallis&aacute;</h1></a>
-
-  {# Grabs the data to list all the content types (set as multiple) from the CMS. #}
-  {% set types = getTypes() %}
-  {# If you have at least content page type, we show a list. #}
-  {% if types|size !== 0 %}
-  {#
-    <ul class="flex flex--inline">
-      <li><a href="/">Home</a></li>
-      {% for type in types %}
-        <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
+  <a href="/"><h1 class="logo">Alexis Gallis&aacute;</h1></a>
+  {% if !home_page %}
+    <ul class="flex flex--spaceBetween">
+      {% for item in data %}
+        <li><a href="{{ url(item) }}">{{ item.name }}</a></li>
       {% endfor %}
     </ul>
-  #}
   {% endif %}
-
 </nav>
-
 {% endspaceless %}

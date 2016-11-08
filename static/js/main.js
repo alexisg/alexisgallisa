@@ -1,33 +1,6 @@
 // On Document Ready
 $(function() {
 
-  //Force all anchor links that go offsite to open in a new window
-  var anchorBlank = function() {
-    $('a').each(function() {
-      var a = new RegExp('/' + window.location.host + '/');
-      if (!a.test(this.href)) {
-        $(this).click(function(event) {
-          event.preventDefault();
-          event.stopPropagation();
-          window.open(this.href, '_blank');
-        });
-      }
-    });
-
-    // $('.js-anchor-left').click(function() {
-    //   console.log('left');
-    //   $('#js-fade').removeClass('transition--fadeflipright').addClass('transition--fadeflipleft');
-    // });
-
-    // $('.js-anchor-right').click(function() {
-    //   $('#js-fade').removeClass('transition--fadeflipleft').addClass('transition--fadeflipright');
-    // });
-
-
-  };
-
-  anchorBlank();
-
   // Video loader if you are on not on a touch device
   var videoLoad = function() {
     $('.js-media-hold').each(function() {
@@ -40,8 +13,6 @@ $(function() {
     })
   };
 
-  videoLoad();
-
   // If not on a touch device use smoothState
   if (!Modernizr.touch) {
     'use strict';
@@ -53,7 +24,7 @@ $(function() {
       pageCacheSize: 8,
 
       onStart: {
-        duration: 400,
+        duration: 600,
         render: function($container) {
           // Scroll page back up
           $body.animate({ scrollTop: 0 });
@@ -78,11 +49,10 @@ $(function() {
 
   }
 
+  // Kick off video load function
+  videoLoad();
   // Kick off the animation class on first load since smoothstate is not yet available
   $('#js-main').addClass('transition-start');
   $('#js-main').smoothState();
-
-
-
 
 });
