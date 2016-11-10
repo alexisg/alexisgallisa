@@ -1,14 +1,12 @@
 // Baseline variables
-$base-font-size               : 16px
+$base-font-size               : 16
 $base-cap-height              : 0.72
-$optical-adjustment-width     : 1.1618
-$base-line-height             : 1.618
-$base-scale                   : 2
-$base-unit                    : $base-line-height / $base-scale * $base-font-size
+$base-line-height             : 12 // Half of desired lineheight
+$base-unit                    : 1rem
 
 // Modular Scale Variables
 $ms-base                      : $base-font-size
-$ms-ratio                     : $major-second
+$ms-ratio                     : $minor-second
 $font-size-max                : 5
 $font-size-1                  : ms($font-size-max)
 $font-size-2                  : ms($font-size-max - 1)
@@ -19,15 +17,23 @@ $font-size-6                  : ms($font-size-max - 5)
 $font-size-7                  : ms($font-size-max - 6)
 $font-size-8                  : ms($font-size-max - 7)
 
-// Grid Variables
-$grid_columns                 : 12
-$grid_gutter_width            : $base-unit
-$grid_gutter_height           : $base-unit
-$grid_max_width               : 760px
-$break-sm                     : 480px
-$break-md                     : 768px
-$break-lg                     : 1024px
-$breakpoints                  : ("sm":$break-sm,"md": $break-md,"lg": $break-lg)
+/* Add all font-sizes to a map list so they are
+   available to us in the future */
+$font-sizes: $font-size-1, $font-size-2, $font-size-3, $font-size-4, $font-size-5, $font-size-6, $font-size-7, $font-size-8
+
+// Tower
+$grid-columns                 : 12
+$grid-gutter-width            : 1.5rem
+$grid-gutter-width-lg         : 2rem
+$grid-gutter-width-sm         : 1.0rem
+$grid-gutter-width-xs         : 0.5rem
+$grid-max-width               : 760px
+$break-sm                     : 768px
+$break-md                     : 1024px
+$break-lg                     : 1200px
+$break-xl                     : 1440px
+$breakpoints                  : ("sm":$break-sm,"md": $break-md,"lg": $break-lg,"xl": $break-xl)
+
 
 
 $color-body                   : hsl(210, 8%, 90%)

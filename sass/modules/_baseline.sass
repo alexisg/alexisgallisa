@@ -1,12 +1,10 @@
 html
-  +set-base-font-size($base-font-size)
+  text-size-adjust: 100%
+  +rootsize
 
-If you want to inject the baseline grid image onto the site, uncomment this
-body
-  &:before
-    +content-block
-    +show-baseline
-    z-index: 99999999999999
+// If you want to inject the baseline grid image onto the site, uncomment this
+// body
+//   +show-baseline
 
 // Add this class to any container to show the baseline
 .show-baseline
@@ -16,25 +14,25 @@ body
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 h1
   margin: 0 //reset normalize
-  +align-to-baseline($font-size-1,$offset-bottom: 1)
+  +baseline($font-size-1,$below: 1)
 
 h2
-  +align-to-baseline($font-size-2,$offset-bottom: 1)
+  +baseline($font-size-2,$below: 2)
 
 h3
-  +align-to-baseline($font-size-3)
+  +baseline($font-size-3)
 
 h4
-  +align-to-baseline($font-size-4)
+  +baseline($font-size-4)
 
 h5
-  +align-to-baseline($font-size-5)
+  +baseline($font-size-5)
 
 h5
-  +align-to-baseline($font-size-6)
+  +baseline($font-size-6)
 
 p
-  +align-to-baseline($offset-bottom: 1)
+  +baseline($below: 2)
 
 h1,h2,h3,h4,h5
   + p
@@ -68,7 +66,7 @@ li,dd,dt
 
 
 li
-  +align-to-baseline()
+  +baseline()
 
 // Table styles
 //––––––––––––––––––––––––––––––––––––––––––––––––––

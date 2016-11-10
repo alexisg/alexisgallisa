@@ -1,8 +1,8 @@
 @import modular-scale/stylesheets/modular-scale
-@import grid.scss/grid
 @import normalize-css/normalize
 
 /* Non Vendor Styles */
+@import modules/measure
 @import modules/variables
 @import modules/mixin
 @import modules/aspect
@@ -16,7 +16,6 @@
   margin: 0
   padding: 0
   box-sizing: border-box
-
 
 html
   background: $color-body
@@ -158,13 +157,13 @@ ul
 // Main portfolio grid
 // ---------------------------
 .list-portfolio
-  margin: 0 auto guv(1)
+  margin-bottom: guv(1)
   text-align: center
   transition: all .25s
   a,img,video
     display: block
   p
-    opacity: .75
+    // opacity: .75
     display: none
     font-size: $font-size-8
     [data-enter='enter-'] &
@@ -203,7 +202,8 @@ ul
   min-width: 16.6666667%
 
 .list-portfolio__hdr
-  margin: 0 auto
+  margin-left: auto
+  margin-right: auto
   max-width: 100%
   overflow: hidden
   transition: all .5s cubic-bezier(0.465, 0.183, 0.153, 0.946)
