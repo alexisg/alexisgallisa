@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "normalize-css": "~3.0.3",
-    "grid.scss": "*",
-    "modular-scale": "~2.1.1"
+    "modular-scale": "~2.1.1",
+    "headhesive": "~1.2.4"
   }
 }

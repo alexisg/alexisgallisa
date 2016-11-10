@@ -13,20 +13,7 @@
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 
 {% block content %}
-  {# <ul class="nav-portfolio flex">
-    {% for object in data %}
-      {% if item.preview_url == object.preview_url && data[loop.key - 1] %}
-        <li><a href="{{ url(data[loop.key - 1]) }}" class="js-anchor-left">&laquo; Prev</a></li>
-      {% endif %}
-
-      {% if item.preview_url == object.preview_url && data[loop.key + 1] %}
-        <li class="text-right"><a href="{{ url(data[loop.key + 1]) }}" class="js-anchor-right">Next &raquo;</a></li>
-      {% elseif item.preview_url == object.preview_url && !data[loop.key + 1] %}
-        <li class="text-right"><a href="{{ url(data[0]) }}" class="js-anchor-right">Next &raquo;</a></li>
-      {% endif %}
-    {% endfor %}
-  </ul> #}
-
+<article class="mg-t-1">
   <div class="js-media-hold aspect aspect--square mg-b-2" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(1280,1280) }}"></div>
 
   <h2>{{ item.name }}</h2>
@@ -54,5 +41,5 @@
   </ul>
 
   {{ item.wysiwyg_text|safe }}
-
+</article>
 {% endblock %}

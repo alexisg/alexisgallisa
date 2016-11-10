@@ -6,20 +6,40 @@ $base-unit                    : 1rem
 
 // Modular Scale Variables
 $ms-base                      : $base-font-size
-$ms-ratio                     : $minor-second
+$ms-ratio                     : $minor-third
 $font-size-max                : 5
 $font-size-1                  : ms($font-size-max)
 $font-size-2                  : ms($font-size-max - 1)
 $font-size-3                  : ms($font-size-max - 2)
 $font-size-4                  : ms($font-size-max - 3)
 $font-size-5                  : ms($font-size-max - 4)
+$font-size-base               : ms-to-rem(16)
 $font-size-6                  : ms($font-size-max - 5)
 $font-size-7                  : ms($font-size-max - 6)
 $font-size-8                  : ms($font-size-max - 7)
 
+// $font-size-1                  : 36
+// $font-size-2                  : 24
+// $font-size-3                  : 21
+// $font-size-4                  : 18
+// $font-size-5                  : 16
+// $font-size-6                  : 14
+// $font-size-7                  : 12
+// $font-size-8                  : 11
+
 /* Add all font-sizes to a map list so they are
    available to us in the future */
 $font-sizes: $font-size-1, $font-size-2, $font-size-3, $font-size-4, $font-size-5, $font-size-6, $font-size-7, $font-size-8
+
+// Uncomment to output font-sizes to terminal in px values for developers
+@debug "font-size-1:" + ms-to-px($font-size-1)
+@debug "font-size-2:" + ms-to-px($font-size-2)
+@debug "font-size-3:" + ms-to-px($font-size-3)
+@debug "font-size-4:" + ms-to-px($font-size-4)
+@debug "font-size-5:" + ms-to-px($font-size-5)
+@debug "font-size-6:" + ms-to-px($font-size-6)
+@debug "font-size-7:" + ms-to-px($font-size-7)
+@debug "font-size-8:" + ms-to-px($font-size-8)
 
 // Tower
 $grid-columns                 : 12
@@ -27,7 +47,7 @@ $grid-gutter-width            : 1.5rem
 $grid-gutter-width-lg         : 2rem
 $grid-gutter-width-sm         : 1.0rem
 $grid-gutter-width-xs         : 0.5rem
-$grid-max-width               : 760px
+$grid-max-width               : 768px
 $break-sm                     : 768px
 $break-md                     : 1024px
 $break-lg                     : 1200px
@@ -36,10 +56,11 @@ $breakpoints                  : ("sm":$break-sm,"md": $break-md,"lg": $break-lg,
 
 
 
-$color-body                   : hsl(210, 8%, 90%)
-$color-text                   : hsl(210, 8%, 10%)
-$color-hdr                    : hsl(210, 8%, 15%)
-$color-icon                   : hsl(210, 8%, 15%)
+$color-body                   : hsl(210, 20%, 20%)
+$color-text                   : hsl(210, 8%, 80%)
+$color-hdr                    : hsl(210, 8%, 90%)
+$color-sub-hdr                : hsl(210, 8%, 60%)
+$color-icon                   : hsl(210, 20%, 90%)
 
-$color-link                   : hsl(210, 25%, 25%)
-$color-link-hover             : hsl(210, 25%, 05%)
+$color-link                   : hsl(210, 8%, 85%)
+$color-link-hover             : hsl(210, 40%, 80%)

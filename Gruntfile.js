@@ -102,7 +102,7 @@ module.exports = function(grunt) {
         prefix : 'icon-', // This will prefix each ID
         includedemo : '<!doctype html><html><head><style>html {background: #6441A5;}body {background: #6441A5;max-width: 1100px;margin: 0 auto;padding: 60px 0;}svg {width: 100px;height: 100px;fill: white;position: relative;z-index: 1;-webkit-transition: all 0.25s;transition: all 0.25s;padding: 10px;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;}ul{list-style:none;}li{display:inline-block;margin-bottom:20px;}span{display:block; font-size:12px;font-family:sans-serif;text-align:center;}</style><head><body>{{{svg}}}<ul>{{#each icons}}<li><svg><use xlink:href="#{{name}}" /></svg><span>#{{name}}</span></li>{{/each}}</ul></body></html>',
         inheritviewbox: true,
-        cleanup: ['style','fill'],
+        cleanup: ['fill'],
         includeTitleElement: false,
         svg: { // will add and overide the the default xmlns="http://www.w3.org/2000/svg" attribute to the resulting SVG
           viewBox : '0 0 100 100',

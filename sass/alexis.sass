@@ -23,11 +23,11 @@ html
 
 body
   background: $color-body
-  background: linear-gradient(0deg, darken($color-body,2%), lighten($color-body,2%)) repeat-x
+  // background: linear-gradient(0deg, darken($color-body,2%), lighten($color-body,2%)) repeat-x
   color: $color-text
-  font-family: 'lato',sans-serif
+  font-family: 'Lato', sans-serif
   font-weight: 300
-  padding: 30px 0
+  padding: 2rem
   min-height: 101%
 
 img,video
@@ -37,18 +37,39 @@ img,video
 // Typography
 // ---------------------------
 
-h1,h2,h3,h4
+h1,h2,h3,h4,h5,h6
   color: $color-hdr
-  font-weight: 400
-h5,h6
-  color: $color-hdr
+h1
+  font-weight: 700
+h2
   font-weight: 300
+h3
+  font-weight: 400
+h4
+  font-weight: 300
+h5,h6
+  font-weight: 300
+
+h2
+  display: flex
+  align-items: center
+  span
+    flex-grow: 1
+    background: $color-hdr
+    height: 1px
+    opacity: 0.15
+    margin-top: 1px
+    margin-left: guv(1)
+
+.hdr-span
+  opacity: .6
+  font-weight: 100
+  font-size: .8em
 
 a
   color: $color-link
   cursor: pointer
   text-decoration: none
-  transition: all .3s
   transform-origin: 0 0
   &:hover
     color: $color-link-hover
@@ -71,18 +92,31 @@ ul
 // Logo, portrait and list
 // ---------------------------
 .logo
-  background: url('/static/images/logo--dark@2x.png') no-repeat 0 0
-  background-size: 100% auto
-  margin: 0 auto
+  // font-family: 'Lora', serif
+  // font-weight: 300
+  // +font-smooth
+  margin-left: auto
+  margin-right: auto
   overflow: hidden
+  white-space: nowrap
+  text-align: center
+  background: url('/static/images/logo@2x.png') no-repeat 0 0
+  background-size: 100% auto
   text-indent: 120%
   height: guv(8)
   width: 290px
-  white-space: nowrap
+
+
+.intro
+  color: $color-hdr
+  text-align: center
+  font-family: 'Lora', serif
+  font-weight: 400
+  +font-smooth
 
 .portrait
   position: relative
-  margin-top: guv(-2)
+  margin: guv(-2) auto 0
   &:hover
     .icon-andre
       background-position: 0 -70px
@@ -105,7 +139,6 @@ ul
     right: 0
     bottom: 0
 
-
 .portrait__icon
   position: absolute
   left: 50%
@@ -117,24 +150,33 @@ ul
 // Icons
 // ---------------------------
 .icon
+  background-repeat: no-repeat
+  background-size: auto 100%
   display: inline-block
   overflow: hidden
+  height: 32px
+  width: 32px
+  vertical-align: middle
 
-.icon-andre
-  background: url('/static/images/icn-andre.png') 0 0
+.icon--andre
+  background: url('/static/images/icon-andre.png') 0 0
   background-size: 24px auto
   width: 24px
   height: 46px
   &:hover
     background-position: 0 -70px
   +retina
-    background-image: url('/static/images/icn-andre@2x.png')
+    background-image: url('/static/images/icon-andre@2x.png')
+
+.icon--doc
+  background-image: url('/static/images/icon-door-32x32.png')
+
 
 // ---------------------------
 // List of networks in footer
 // ---------------------------
 .list-networks
-  margin: 0 auto guv(2)
+  margin: guv(2) auto
   text-align: center
   width: 100%
 
@@ -142,7 +184,10 @@ ul
   font-size: .75rem
   flex: 0 0 auto
   margin: 0 guv(2)
+  opacity: .25
+  transition: all .25s
   &:hover
+    opacity: 1
     svg
       transform: scale(1.2)
   svg
@@ -151,23 +196,21 @@ ul
     margin: 0 auto .25rem
     fill: $color-icon
     display: block
-    transition: all .15s
+    // transition: all .25s
 
 // ---------------------------
 // Main portfolio grid
 // ---------------------------
 .list-portfolio
-  margin-bottom: guv(1)
+  background: rgba($color-body,.98)
+  padding: guv(.5) 0 0
   text-align: center
-  transition: all .25s
   a,img,video
     display: block
-  p
-    // opacity: .75
-    display: none
-    font-size: $font-size-8
-    [data-enter='enter-'] &
-      display: block
+
+// .list-portfolio__item
+//   margin: 0
+//   padding-top: 0
 
 .list-portfolio__link
   &:hover
@@ -176,6 +219,8 @@ ul
 .list-portfolio__link--active
   color: $color-link-hover
   position: relative
+  .list-portfolio__hdr
+    color: $color-link
   &:after
     content: ''
     background: $color-link
@@ -201,13 +246,30 @@ ul
   margin-bottom: guv(1)
   min-width: 16.6666667%
 
-.list-portfolio__hdr
+.list-portfolio__hide
   margin-left: auto
   margin-right: auto
   max-width: 100%
   overflow: hidden
-  transition: all .5s cubic-bezier(0.465, 0.183, 0.153, 0.946)
+  transition: all .3s cubic-bezier(0.465, 0.183, 0.153, 0.946)
   white-space: nowrap
+  a:hover &
+    color: $color-link-hover
   .transition-end[data-exit='exit-'] &
     max-width: 0
     opacity: 0
+
+.list-portfolio__hdr
+  +baseline($font-size-5, $below: 0)
+  .list-portfolio--row &
+    +baseline($font-size-5, $below: 1)
+
+.list-portfolio__deck
+  color: $color-sub-hdr
+  display: none
+  // +baseline($font-size-7, $below: 2)
+  [data-enter='enter-'] &
+    display: block
+
+.sticky-nav
+  z-index: 999

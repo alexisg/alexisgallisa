@@ -6,6 +6,11 @@ html
 // body
 //   +show-baseline
 
+// Site-wide base styles.
+body
+  font-size: $font-size-base
+  line-height: 2rem
+
 // Add this class to any container to show the baseline
 .show-baseline
   +show-baseline
@@ -14,29 +19,29 @@ html
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 h1
   margin: 0 //reset normalize
-  +baseline($font-size-1,$below: 1)
+  +baseline($font-size-1,$lineheight: 3,$below: 1)
 
 h2
-  +baseline($font-size-2,$below: 2)
+  +baseline($font-size-2,$lineheight: 2,$below: 1)
 
 h3
-  +baseline($font-size-3)
+  +baseline($font-size-3,$lineheight: 2,$below: 1)
 
 h4
-  +baseline($font-size-4)
+  +baseline($font-size-4,$lineheight: 2,$below: 1)
 
 h5
-  +baseline($font-size-5)
+  +baseline($font-size-5,$below: 0)
 
 h5
-  +baseline($font-size-6)
+  +baseline($font-size-6,$below: 0)
 
 p
   +baseline($below: 2)
 
-h1,h2,h3,h4,h5
-  + p
-    padding-top: 0
+// h1,h2,h3,h4,h5
+//   + p
+//     padding-top: 0
 
 
 // Horizontal Rule

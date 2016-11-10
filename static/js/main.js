@@ -35,13 +35,14 @@ $(function() {
       prefetch: true,
       pageCacheSize: 8,
       blacklist: ".no-smoothstate, [target], [data-type='image'] a",
+      scroll: false,
 
       onStart: {
         duration: 600,
         render: function($container) {
           $('#js-main').attr('data-exit', getEnterExitString('exit'));
           // Scroll page back up
-          $body.animate({ scrollTop: 0 });
+          $body.animate({ scrollTop: 0 }, 600);
           // Set classes for animation fading
           $('#js-main')
             .removeClass('transition-start')
@@ -63,12 +64,18 @@ $(function() {
           .addClass('transition-start')
           .attr('data-enter', getEnterExitString('enter'));
         videoLoad();
+        stickyLoad();
       }
     }).data('smoothState');
 
   }
 
+  var stickyLoad = function() {
+    $(".sticky-nav").pin()
+  }
+
   // Kick off video load function
+  stickyLoad();
   videoLoad();
   // Kick off the animation class on first load since smoothstate is not yet available
   $('#js-main').addClass('transition-start');
