@@ -27,7 +27,7 @@
     {% endfor %}
   </ul> #}
 
-  <div class="js-media-hold aspect aspect--square mg-b-2" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(580,580) }}"></div>
+  <div class="js-media-hold aspect aspect--square mg-b-2" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(1280,1280) }}"></div>
 
   <h2>{{ item.name }}</h2>
 
@@ -47,7 +47,7 @@
     {% for image in item.gallery %}
       <li>
         {# You can get the raw image url by accessing image.url #}
-        <img src="{{ image|imageSize(200, 200) }}">
+        <img src="{{ image|imageSize(400, 400) }}">
         <div>{{ image.caption }}</div>
       </li>
     {% endfor %}

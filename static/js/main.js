@@ -37,7 +37,7 @@ $(function() {
       blacklist: ".no-smoothstate, [target], [data-type='image'] a",
 
       onStart: {
-        duration: 1000,
+        duration: 600,
         render: function($container) {
           $('#js-main').attr('data-exit', getEnterExitString('exit'));
           // Scroll page back up

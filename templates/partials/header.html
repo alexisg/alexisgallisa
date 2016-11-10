@@ -1,14 +1,40 @@
 {% set curUrl = getCurrentUrl() %}
 
 <nav>
-  <a href="/"><h1 class="logo">Alexis Gallis&aacute;</h1></a>
+  {% if !home_page %}<a href="/">{% endif %}
+    <h1 class="logo">
+      <svg><use xlink:href="#icon-logomark"></use></svg>
+      Alexis Gallis&aacute;
+    </h1>
+  {% if !home_page %}</a>{% endif %}
 
   {% if home_page %}
-    <div class="portrait transition transition--height transition--fadein">
+    <div class="portrait transition transition--fadein">
       <div class="portrait__img"><img src="/static/images/pic300.jpg"></div>
       <span class="portrait__icon icon icon-andre"></span>
     </div>
-    <p class="text-center transition transition--height transition--fadein">Design/front-end lead specializing in web/mobile design, design systems, CSS/SASS frameworks, responsive layouts, JS interactions, large site templating and content management implementations.</p>
+    <p class="text-center transition transition--fadein">Design/front-end lead specializing in web/mobile design, design systems, CSS/SASS frameworks, responsive layouts, JS interactions, large site templating and content management implementations.</p>
+  {% endif %}
+
+  {% if home_page %}
+    <h2>Resumé Highlights</h2>
+
+    <h3>Senior UI/UX Designer/Developer</h3>
+    <h4>Twitch, San Francisco Ca Dec 2014 - Present</h4>
+    <p>Primary design and technical lead on several projects at Twitch including TwitchCon.com/2015/, web accessibility, and a CSS framework initiative. </p>
+
+    <h3>Creative Technical Director</h3>
+    <h4>CBS Interactive, Inc., San Francisco Ca Dec 2012 - Dec 2014</h4>
+    <p>Led a full redesign and front-end rebuild of GameSpot.com.</p>
+
+    <h3>Art Director</h3>
+    <h4>Cbs Interactive, Inc., San Francisco Ca Mar 2012 - Dec 2012</h4>
+    <p>Led the redesign of GiantBomb.com and ComicVine.com following the acquisition of Whiskey Media by CBS. </p>
+
+  {% endif %}
+
+  {% if home_page %}
+    <h2>Portfolio</h2>
   {% endif %}
 
   <ul class="
@@ -22,12 +48,12 @@
       <li class="list-portfolio__item">
         <a href="{{ url(item) }}" class="list-portfolio__link {% if curUrl == url(item)') %}list-portfolio__link--active{% endif %}">
           {% if home_page %}
-            <div class="transition transition--height transition--fadein">
+            <div class="transition transition--fall transition--fadein">
               <div class="js-media-hold list-portfolio__media aspect aspect--square" data-video="{{item.video_small.url}}" data-img="{{ item.image|imageCrop(580,580) }}"></div>
             </div>
           {% endif %}
-          <h4>{{item.name}}</h4>
-          <p class="transition transition--height transition--fadein">{{item.deck}}</p>
+          <h4 class="list-portfolio__hdr">{{item.name}}</h4>
+          <p class="list-portfolio__hdr">{{item.deck}}</p>
         </a>
       </li>
     {% endfor %}
