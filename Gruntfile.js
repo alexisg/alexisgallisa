@@ -66,30 +66,10 @@ module.exports = function(grunt) {
           map: false,
           processors: [
             // require("css-mqpacker"),
-            require('autoprefixer-core')({browsers: 'last 2 versions,ie 8, ie 9'})
+            require('autoprefixer')({browsers: 'last 2 versions,ie 8, ie 9'})
           ]
         }
       }
-    },
-
-    //  _   _ ___ ___   _ _____ ___
-    // | | | | _ \   \ /_\_   _| __|
-    // | |_| |  _/ |) / _ \| | | _|
-    //  \___/|_| |___/_/ \_\_| |___|
-    // Rung grunt devUpdate to check for newer packages
-
-    devUpdate: {
-      report: {
-        options: {
-          updateType: 'report', //just report outdated packages
-        }
-      },
-      update: {
-        options: {
-          updateType: 'prompt', //just report outdated packages
-        }
-      },
-
     },
 
     //  _____   _____
