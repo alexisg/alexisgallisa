@@ -13,8 +13,8 @@
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 
 {% block content %}
-<article class="mg-t-1">
-  <div class="js-media-hold aspect aspect--square mg-b-2" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(1280,1280) }}"></div>
+<article class="mg-t-2">
+  <div class="js-media-hold aspect aspect--square mg-b-3" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(1280,1280) }}"></div>
 
   <h2>{{ item.name }}</h2>
 
@@ -29,7 +29,7 @@
   {% endif %}
 
 
-
+  <!--
   <ul>
     {% for image in item.gallery %}
       <li>
@@ -39,6 +39,7 @@
       </li>
     {% endfor %}
   </ul>
+  -->
 
   {{ item.wysiwyg_text|safe }}
 </article>

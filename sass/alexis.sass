@@ -1,7 +1,7 @@
 @import modular-scale/stylesheets/modular-scale
-@import normalize-css/normalize
 
 /* Non Vendor Styles */
+@import modules/fontface
 @import modules/measure
 @import modules/variables
 @import modules/mixin
@@ -17,18 +17,13 @@
   padding: 0
   box-sizing: border-box
 
-html
-  background: $color-body
-  height: 100%
-
 body
   background: $color-body
-  // background: linear-gradient(0deg, darken($color-body,2%), lighten($color-body,2%)) repeat-x
   color: $color-text
-  font-family: 'Lato', sans-serif
-  font-weight: 300
-  padding: 2rem
-  min-height: 101%
+  font-family: 'AvenirLTPro-Light'
+  font-weight: normal
+  font-style: normal
+  padding: 3rem 2rem
 
 img,video
   max-width: 100%
@@ -39,38 +34,18 @@ img,video
 
 h1,h2,h3,h4,h5,h6
   color: $color-hdr
+  font-weight: normal
+  font-style: normal
+
 h1
-  font-weight: 700
-h2
-  font-weight: 300
-h3
-  font-weight: 400
-h4
-  font-weight: 300
-h5,h6
-  font-weight: 300
-
-h2
-  display: flex
-  align-items: center
-  span
-    flex-grow: 1
-    background: $color-hdr
-    height: 1px
-    opacity: 0.15
-    margin-top: 1px
-    margin-left: guv(1)
-
-.hdr-span
-  opacity: .6
-  font-weight: 100
-  font-size: .8em
+  +font-smooth
 
 a
   color: $color-link
   cursor: pointer
   text-decoration: none
   transform-origin: 0 0
+  transition: .2s all
   &:hover
     color: $color-link-hover
     cursor: pointer
@@ -79,44 +54,31 @@ ul
   list-style: none
   text-align: left
 
-.text-left
+// ---------------------------
+// Helpers
+// ---------------------------
+.align-left
   text-align: left
-.text-center
+.align-center
   text-align: center
-.text-right
+.align-right
   text-align: right
-.text-small
-  font-size: .75rem
+.sticky-nav
+  z-index: 999
 
 // ---------------------------
-// Logo, portrait and list
+// Logo and portrait
 // ---------------------------
 .logo
-  // font-family: 'Lora', serif
-  // font-weight: 300
-  // +font-smooth
+  margin-top: guv(1)
   margin-left: auto
   margin-right: auto
   overflow: hidden
   white-space: nowrap
-  text-align: center
-  background: url('/static/images/logo@2x.png') no-repeat 0 0
-  background-size: 100% auto
-  text-indent: 120%
-  height: guv(8)
-  width: 290px
-
-
-.intro
-  color: $color-hdr
-  text-align: center
-  font-family: 'Lora', serif
-  font-weight: 400
-  +font-smooth
 
 .portrait
   position: relative
-  margin: guv(-2) auto 0
+  margin: 0 auto
   &:hover
     .icon-andre
       background-position: 0 -70px
@@ -173,40 +135,16 @@ ul
 
 
 // ---------------------------
-// List of networks in footer
-// ---------------------------
-.list-networks
-  margin: guv(2) auto
-  text-align: center
-  width: 100%
-
-.list-networks__item
-  font-size: .75rem
-  flex: 0 0 auto
-  margin: 0 guv(2)
-  opacity: .25
-  transition: all .25s
-  &:hover
-    opacity: 1
-    svg
-      transform: scale(1.2)
-  svg
-    height: 32px
-    width: 32px
-    margin: 0 auto .25rem
-    fill: $color-icon
-    display: block
-    // transition: all .25s
-
-// ---------------------------
 // Main portfolio grid
 // ---------------------------
 .list-portfolio
-  background: rgba($color-body,.98)
   padding: guv(.5) 0 0
   text-align: center
   a,img,video
     display: block
+
+.list-portfolio--row
+  background: rgba($color-body,.98)
 
 // .list-portfolio__item
 //   margin: 0
@@ -253,23 +191,46 @@ ul
   overflow: hidden
   transition: all .3s cubic-bezier(0.465, 0.183, 0.153, 0.946)
   white-space: nowrap
-  a:hover &
-    color: $color-link-hover
   .transition-end[data-exit='exit-'] &
     max-width: 0
     opacity: 0
 
 .list-portfolio__hdr
   +baseline($font-size-5, $below: 0)
+  a:hover &
+    color: $color-link-hover
   .list-portfolio--row &
-    +baseline($font-size-5, $below: 1)
+    +baseline($font-size-6, $below: 1)
 
 .list-portfolio__deck
   color: $color-sub-hdr
   display: none
-  // +baseline($font-size-7, $below: 2)
+  +baseline($font-size-7, $below: 3)
   [data-enter='enter-'] &
     display: block
 
-.sticky-nav
-  z-index: 999
+// ---------------------------
+// List of networks in footer
+// ---------------------------
+.list-networks
+  margin: guv(2) auto
+  text-align: center
+  width: 100%
+
+.list-networks__item
+  font-size: .75rem
+  flex: 0 0 auto
+  margin: 0 guv(2)
+  transition: all .25s
+  &:hover
+    opacity: 1
+    svg
+      transform: scale(1.2)
+      fill: $color-text
+  svg
+    height: 32px
+    width: 32px
+    margin: 0 auto .25rem
+    fill: $color-icon
+    display: block
+    // transition: all .25s
