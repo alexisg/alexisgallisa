@@ -19,7 +19,7 @@ $(function() {
       if (!Modernizr.touch && Modernizr.video.h264 && url_video) {
         $(this).append("<video autoplay loop class='aspect__fill'><source src='" + $(this).attr("data-video") + " 'type='video/mp4'></video>");
       } else {
-        $(this).append("<img class='aspect__fill' src='" + $(this).attr("data-img") + " ' />");
+        $(this).append("<img class='aspect__fill' src='" + $(this).attr("data-img") + " ' alt='" + $(this).attr("data-title") + " ' />");
       }
     })
   };

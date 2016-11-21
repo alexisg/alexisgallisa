@@ -140,6 +140,8 @@ body::-webkit-scrollbar-thumb
   bottom: -14px
   margin-left: 36px
 
+.intro
+  +baseline($below: 4)
 
 // ---------------------------
 // Icons
@@ -213,8 +215,8 @@ body::-webkit-scrollbar-thumb
     top: 100%
     margin-top: -1px
     height: 1px
-    animation: spread .6s
-    transition: all .6s
+    animation: spread .2s
+    transition: all .2s
     .transition-end &
       left: 50%
       right: 50%
@@ -243,6 +245,7 @@ body::-webkit-scrollbar-thumb
     white-space: nowrap
 
 .list-portfolio__hdr
+  color: $color-hdr
   +baseline($font-size-5, $below: 0)
   a:hover &
     color: $color-link-hover
@@ -264,40 +267,20 @@ body::-webkit-scrollbar-thumb
   width: 100%
 
 .list-networks__item
+  color:  $color-sub-hdr
   flex: 0 0 auto
+  font-size: $font-size-8
   margin: 0 guv(2)
-  transition: all .25s
-  font-size: $font-size-7
+  text-transform: uppercase
   &:hover
-    opacity: 1
+    color:  $color-link-hover
     svg
-      transform: scale(1.2)
-      fill: $color-link-hover
+      // transform: scale(1.2)
+      fill: $color-hdr
   svg
-    height: 32px
-    width: 32px
-    margin: 0 auto 1rem
-    fill: $color-icon
+    height: 24px
+    width: 24px
+    margin: 0 auto .5rem
+    fill: $color-sub-hdr
     display: block
-    // transition: all .25s
-
-.wallpaper
-  position: fixed
-  left: 0
-  top: 0
-  right: 0
-  bottom: 0
-  background-size: cover
-  opacity: 0
-  filter: blur(10px)
-  z-index: -1
-  .transition-start &
-    opacity: 0.02
-  &:before
-    content: ''
-    position: absolute
-    left: 0
-    top: 0
-    right: 0
-    bottom: 50%
-    background: linear-gradient( $color-body, rgba($color-body,0) )
+    transition: all .3s

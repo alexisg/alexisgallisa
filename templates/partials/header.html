@@ -2,7 +2,7 @@
 
   {% if home_page %}
     <div class="portrait transition transition--fadein transition--height">
-      <div class="portrait__img"><img src="/static/images/pic300.jpg"></div>
+      <div class="portrait__img"><img src="/static/images/pic300.jpg" alt="Portrait image"></div>
       <span class="portrait__icon icon icon--andre"></span>
     </div>
   {% endif %}
@@ -16,7 +16,7 @@
   {% if home_page %}
     <p class="intro align-center transition transition--fadein mg-t-1">
       Design/front-end lead specializing in web/mobile design, design systems, CSS/SASS frameworks, responsive layouts, JS interactions, large site templating and content management implementations. <br>
-      Currenly working as the Head of Core Product Design at <a href="https://twitch.tv">Twitch</a>. I lead a team developing our CSS framework which is focused on making designers/developers build faster more consistent features while pushing on better accessbility for all users.
+      Currenly working as the Head of Core Product Design at <a href="https://twitch.tv">Twitch</a>. I lead a team developing our CSS framework which is focused on making designers/developers build faster more consistent features while pushing on better accessbility for all users. Previously I was the Creative Technical Director at CBSi Games, where I led the redesigns of <a href="http://gamespot.com">GameSpot</a> and <a href="http://giantbomb.com">Giant Bomb</a>.
     </p>
   {% endif %}
 
@@ -37,7 +37,12 @@
           <a href="{{ url(item) }}" class="list-portfolio__link {% if curUrl == url(item)') %}list-portfolio__link--active{% endif %}">
             {% if home_page %}
               <div class="transition transition--fall transition--fadein">
-                <div class="js-media-hold list-portfolio__media shadow aspect aspect--square" data-video="{{item.video_small.url}}" data-img="{{ item.image|imageCrop(580,580) }}"></div>
+                <div class="js-media-hold list-portfolio__media shadow aspect aspect--square"
+                  data-video="{{item.video_small.url}}"
+                  data-img="{{ item.image|imageCrop(580,580) }}"
+                  data-title="{{ item.name }}"
+                >
+                </div>
               </div>
             {% endif %}
             <h4 class="list-portfolio__hdr list-portfolio__hide">{{item.name}}</h4>
