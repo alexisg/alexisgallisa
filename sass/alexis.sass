@@ -23,7 +23,8 @@ body
   font-family: 'AvenirLTPro-Light'
   font-weight: normal
   font-style: normal
-  padding: 3rem 2rem
+  padding: guv(3) guv(2)
+  min-height: 101vh
 
 img,video
   max-width: 100%
@@ -33,19 +34,33 @@ img,video
 // ---------------------------
 
 h1,h2,h3,h4,h5,h6
-  color: $color-hdr
   font-weight: normal
   font-style: normal
 
 h1
+  color: $color-hdr
   +font-smooth
+
+h2
+  color: darken($color-hdr,4%)
+
+h3
+  color: darken($color-hdr,8%)
+
+h4
+  color: darken($color-hdr,12%)
+
+h5
+  color: darken($color-hdr,16%)
+
+
 
 a
   color: $color-link
   cursor: pointer
   text-decoration: none
   transform-origin: 0 0
-  transition: .2s all
+  transition: .3s all
   &:hover
     color: $color-link-hover
     cursor: pointer
@@ -65,22 +80,40 @@ ul
   text-align: right
 .sticky-nav
   z-index: 999
+.shadow
+  box-shadow: hsla($hue, 5%, 5%, .75) 0 10px 15px -5px
+.shadow--lg
+  box-shadow: hsla($hue, 5%, 5%, .75) 0 10px 25px -5px
+
+// ---------------------------
+// Scrollbar - this kills me but it avoids the jank of scrollbar showing up all the time
+// ---------------------------
+body::-webkit-scrollbar
+  width: .75rem
+
+body::-webkit-scrollbar-thumb
+  background-color: darken($color-body,10%)
+  border-radius: 1rem
 
 // ---------------------------
 // Logo and portrait
 // ---------------------------
 .logo
-  margin-top: guv(1)
   margin-left: auto
   margin-right: auto
   overflow: hidden
   white-space: nowrap
+  a
+    color: $color-hdr
+    &:hover
+      color: $color-link-hover
 
 .portrait
   position: relative
   margin: 0 auto
+  z-index: 1
   &:hover
-    .icon-andre
+    .icon--andre
       background-position: 0 -70px
 
 .portrait__img
@@ -138,17 +171,29 @@ ul
 // Main portfolio grid
 // ---------------------------
 .list-portfolio
-  padding: guv(.5) 0 0
+  margin-top: 0
+  margin-bottom: 0
   text-align: center
   a,img,video
     display: block
 
-.list-portfolio--row
-  background: rgba($color-body,.98)
+.list-portfolio__item
+  margin-bottom: guv(1)
+  padding-top: 0
 
-// .list-portfolio__item
-//   margin: 0
-//   padding-top: 0
+.list-portfolio--row
+  background: $color-body
+  position: relative
+  &:after,&:before
+    content: ''
+    background: $color-body
+    position: absolute
+    left: 100%
+    bottom: 0
+    top: 0
+    width: guv(2)
+  &:before
+    left: guv(-2)
 
 .list-portfolio__link
   &:hover
@@ -166,10 +211,13 @@ ul
     left: 0
     right: 0
     top: 100%
-    margin-top: 5px
+    margin-top: -1px
     height: 1px
-    opacity: .5
     animation: spread .6s
+    transition: all .6s
+    .transition-end &
+      left: 50%
+      right: 50%
 
 @keyframes spread
   0%
@@ -180,9 +228,8 @@ ul
     right: 0
 
 .list-portfolio__media
-  box-shadow: hsla(0, 50%, 5%, 1.5) 0 10px 15px -10px
   margin-bottom: guv(1)
-  min-width: 16.6666667%
+
 
 .list-portfolio__hide
   margin-left: auto
@@ -190,22 +237,22 @@ ul
   max-width: 100%
   overflow: hidden
   transition: all .3s cubic-bezier(0.465, 0.183, 0.153, 0.946)
-  white-space: nowrap
   .transition-end[data-exit='exit-'] &
     max-width: 0
     opacity: 0
+    white-space: nowrap
 
 .list-portfolio__hdr
   +baseline($font-size-5, $below: 0)
   a:hover &
     color: $color-link-hover
   .list-portfolio--row &
-    +baseline($font-size-6, $below: 1)
+    +baseline($font-size-base, $lineheight: 3, $below: 1)
 
 .list-portfolio__deck
   color: $color-sub-hdr
   display: none
-  +baseline($font-size-7, $below: 3)
+  +baseline($font-size-7, $below: 2)
   [data-enter='enter-'] &
     display: block
 
@@ -214,23 +261,43 @@ ul
 // ---------------------------
 .list-networks
   margin: guv(2) auto
-  text-align: center
   width: 100%
 
 .list-networks__item
-  font-size: .75rem
   flex: 0 0 auto
   margin: 0 guv(2)
   transition: all .25s
+  font-size: $font-size-7
   &:hover
     opacity: 1
     svg
       transform: scale(1.2)
-      fill: $color-text
+      fill: $color-link-hover
   svg
     height: 32px
     width: 32px
-    margin: 0 auto .25rem
+    margin: 0 auto 1rem
     fill: $color-icon
     display: block
     // transition: all .25s
+
+.wallpaper
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  background-size: cover
+  opacity: 0
+  filter: blur(10px)
+  z-index: -1
+  .transition-start &
+    opacity: 0.02
+  &:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 50%
+    background: linear-gradient( $color-body, rgba($color-body,0) )

@@ -12,35 +12,46 @@
 {# This sets our page <title>. It will append this portfolio's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 
+{% block wallpaper %}
+{# <div class="wallpaper" style="background-image: url({{ item.image|imageCrop(1280,1280) }})"></div> #}
+{% endblock %}
+
 {% block content %}
 <article class="mg-t-2">
-  <div class="js-media-hold aspect aspect--square mg-b-3" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(1280,1280) }}"></div>
 
-  <h2>{{ item.name }}</h2>
+  <div class="js-media-hold aspect aspect--square shadow shadow--lg mg-y-2" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(1280,1280) }}"></div>
+
+  <h3>{{ item.name }}</h3>
 
   {% if item.deck %}
-    <h5>{{ item.deck }}</h5>
+    <h4>{{ item.deck|replace('<br>', ', ', 'g') }}</h4>
   {% endif %}
 
   {% if item.website %}
-    <a href="{{item.website}}">
-      <p>{{item.website|replace('http://', '') }}</p>
-    </a>
+    <p>
+      <a href="{{item.website}}" class="no-smoothstate">
+        {{item.website|replace('http://', '') }}
+      </a>
+    </p>
+  {% else %}
+    <p><em>Website unavailable to public.</em></p>
   {% endif %}
 
-
-  <!--
-  <ul>
-    {% for image in item.gallery %}
-      <li>
-        {# You can get the raw image url by accessing image.url #}
-        <img src="{{ image|imageSize(400, 400) }}">
-        <div>{{ image.caption }}</div>
-      </li>
-    {% endfor %}
-  </ul>
-  -->
+  <hr>
 
   {{ item.wysiwyg_text|safe }}
+
+  {% if item.gallery %}
+    <ul>
+      {% for image in item.gallery %}
+        <li class="mg-b-2">
+          {# You can get the raw image url by accessing image.url #}
+          <a href="{{ image.url }}" class="no-smoothstate"><img src="{{ image|imageSize(744) }}" class="shadow shadow--lg"></a>
+          <div>{{ image.caption }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
 </article>
 {% endblock %}

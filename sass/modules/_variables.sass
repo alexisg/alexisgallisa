@@ -1,22 +1,32 @@
 // Baseline variables
 $base-font-size               : 16
-$base-cap-height              : 0.72
+$base-cap-height              : 0.61
 $base-line-height             : 12 // Half of desired lineheight
 $base-unit                    : 1rem
 
 // Modular Scale Variables
 $ms-base                      : $base-font-size
-$ms-ratio                     : $minor-third
+$ms-ratio                     : $major-third
 $font-size-max                : 5
 $font-size-1                  : ms($font-size-max)
 $font-size-2                  : ms($font-size-max - 1)
 $font-size-3                  : ms($font-size-max - 2)
 $font-size-4                  : ms($font-size-max - 3)
 $font-size-5                  : ms($font-size-max - 4)
-$font-size-base               : ms-to-rem(16)
 $font-size-6                  : ms($font-size-max - 5)
 $font-size-7                  : ms($font-size-max - 6)
 $font-size-8                  : ms($font-size-max - 7)
+
+$font-size-1                  : ms-to-rem($font-size-1)
+$font-size-2                  : ms-to-rem($font-size-2)
+$font-size-3                  : ms-to-rem($font-size-3)
+$font-size-4                  : ms-to-rem($font-size-4)
+$font-size-5                  : ms-to-rem($font-size-5)
+$font-size-6                  : ms-to-rem($font-size-6)
+$font-size-7                  : ms-to-rem($font-size-7)
+$font-size-8                  : ms-to-rem($font-size-8)
+
+$font-size-base               : ms-to-rem($base-font-size)
 
 // $font-size-1                  : 36
 // $font-size-2                  : 24
@@ -32,14 +42,14 @@ $font-size-8                  : ms($font-size-max - 7)
 $font-sizes: $font-size-1, $font-size-2, $font-size-3, $font-size-4, $font-size-5, $font-size-6, $font-size-7, $font-size-8
 
 // Uncomment to output font-sizes to terminal in px values for developers
-@debug "font-size-1:" + ms-to-px($font-size-1)
-@debug "font-size-2:" + ms-to-px($font-size-2)
-@debug "font-size-3:" + ms-to-px($font-size-3)
-@debug "font-size-4:" + ms-to-px($font-size-4)
-@debug "font-size-5:" + ms-to-px($font-size-5)
-@debug "font-size-6:" + ms-to-px($font-size-6)
-@debug "font-size-7:" + ms-to-px($font-size-7)
-@debug "font-size-8:" + ms-to-px($font-size-8)
+@debug "font-size-1:" + rem-to-px($font-size-1)
+@debug "font-size-2:" + rem-to-px($font-size-2)
+@debug "font-size-3:" + rem-to-px($font-size-3)
+@debug "font-size-4:" + rem-to-px($font-size-4)
+@debug "font-size-5:" + rem-to-px($font-size-5)
+@debug "font-size-6:" + rem-to-px($font-size-6)
+@debug "font-size-7:" + rem-to-px($font-size-7)
+@debug "font-size-8:" + rem-to-px($font-size-8)
 
 // Tower
 $grid-columns                 : 12
@@ -57,10 +67,10 @@ $breakpoints                  : ("sm":$break-sm,"md": $break-md,"lg": $break-lg,
 
 $hue                          : 229
 $color-body                   : hsl($hue, 24%, 22%)
-$color-text                   : hsl($hue,  8%, 88%)
-$color-hdr                    : hsl($hue,  8%, 96%)
-$color-sub-hdr                : hsl($hue, 16%, 80%)
-$color-icon                   : hsl($hue, 24%, 72%)
+$color-text                   : hsl($hue, 10%, 88%)
+$color-hdr                    : hsl($hue, 10%, 96%)
+$color-sub-hdr                : hsl($hue, 10%, 66%)
+$color-icon                   : hsl($hue, 40%, 80%)
 
 $color-link                   : hsl($hue, 40%, 80%)
-$color-link-hover             : hsl($hue, 40%, 72%)
+$color-link-hover             : hsl($hue, 50%, 72%)

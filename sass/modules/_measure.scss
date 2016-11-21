@@ -72,14 +72,18 @@
 }
 
 // Set fontsize and baseline at once. Mix of fontsize and baseline mixin.
-@mixin baseline($fontsize: $base-font-size, $lineheight: 2, $below: 1) {
-
+@mixin baseline($fontsize: $base-font-size, $lineheight: "auto", $below: 1) {
   // Lets change this to use http://hugogiraudel.com/2013/08/12/sass-functions/#unit-conversion
   @if unit($fontsize) == "rem" {
     $fontsize: rem-to-ms($fontsize / 1rem);
   }
 
-  line-height: #{$lineheight}rem;
+  @if $lineheight == "auto" {
+    line-height: ceil(ms-to-rem($fontsize));
+    $lineheight: ceil(ms-to-rem($fontsize))/1rem;
+  } @else {
+    line-height: #{$lineheight}rem;
+  }
 
   $baseline-shift: #{($fontsize / 2 * (($lineheight * $base-line-height / $fontsize) - $base-cap-height)) / $base-line-height + 0.00001};
   $baseline-push: #{$below - (($fontsize / 2 * (($lineheight * $base-line-height / $fontsize) - $base-cap-height)) / $base-line-height + 0.00001)};
