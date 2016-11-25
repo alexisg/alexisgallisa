@@ -24,7 +24,7 @@ body
   font-family: 'AvenirPro'
   font-weight: normal
   font-style: normal
-  padding: guv(3) guv(2)
+  padding: guv(2) guv(2)
   min-height: 101vh
 
 img,video
@@ -47,7 +47,6 @@ h1,h2,h3,h4,h5,h6
 
 h1
   color: $color-hdr
-  +font-smooth
 
 h2
   color: $color-hdr
@@ -90,19 +89,19 @@ ul
 .sticky-nav
   z-index: 999
 .shadow
-  box-shadow: hsla($hue, 5%, 5%, .75) 0 10px 15px -5px
+  box-shadow: hsla($hue, 5%, 5%, .25) 0 10px 15px -5px
 .shadow--lg
-  box-shadow: hsla($hue, 5%, 5%, .75) 0 10px 25px -5px
+  box-shadow: hsla($hue, 5%, 5%, .25) 0 10px 25px -5px
 
-// ---------------------------
-// Scrollbar - this kills me but it avoids the jank of scrollbar showing up all the time
-// ---------------------------
-body::-webkit-scrollbar
-  width: .75rem
+// // ---------------------------
+// // Scrollbar - this kills me but it avoids the jank of scrollbar showing up all the time
+// // ---------------------------
+// body::-webkit-scrollbar
+//   width: .75rem
 
-body::-webkit-scrollbar-thumb
-  background-color: darken($color-body,10%)
-  border-radius: 1rem
+// body::-webkit-scrollbar-thumb
+//   background-color: darken($color-body,10%)
+//   border-radius: 1rem
 
 // ---------------------------
 // Logo and portrait
@@ -120,19 +119,17 @@ body::-webkit-scrollbar-thumb
 .portrait
   position: relative
   margin: 0 auto
-  z-index: 1
   &:hover
     .icon--andre
       background-position: 0 -70px
 
 .portrait__img
-  border-radius: 100%
   display: block
   margin: 0 auto
-  overflow: hidden
   position: relative
   height: guv(9)
   width: guv(9)
+
   &:before
     content: ''
     position: absolute
@@ -142,6 +139,8 @@ body::-webkit-scrollbar-thumb
     top: 0
     right: 0
     bottom: 0
+  img
+    border-radius: 100%
 
 .portrait__icon
   position: absolute
@@ -150,7 +149,9 @@ body::-webkit-scrollbar-thumb
   margin-left: 36px
 
 .intro
-  +baseline($below: 4)
+  +baseline($below: 3)
+  a:hover
+    text-decoration: underline
 
 // ---------------------------
 // Icons
@@ -216,7 +217,7 @@ $hamburger-height: 4px
 $hamburger-width: guv(2)
 
 .list-portfolio__toggle
-  box-shadow: rgba(white,.1) 0 -1px 0 0 inset,rgba(white,.1) 0 1px 0 0 inset
+  box-shadow: rgba($color-hdr,.1) 0 -1px 0 0 inset,rgba($color-hdr,.1) 0 1px 0 0 inset
   margin-bottom: guv(1)
   padding-top: 0
   position: relative
@@ -260,13 +261,6 @@ $hamburger-width: guv(2)
       transform: rotate(45deg)
     span:after
       transform: rotate(-45deg)
-
-.list-portfolio__link
-  &:hover
-    cursor: pointer
-
-.list-portfolio__spacer
-  border-right: 1px solid rgba($color-text,.25)
 
 .list-portfolio__link--active
   color: $color-link-hover
@@ -318,26 +312,27 @@ $hamburger-width: guv(2)
   .list-portfolio--row &
     font-size: $font-size-4
     line-height: 4rem
-    padding-top: 0
     margin-bottom: 0
+    padding-top: 0
+    font-weight: normal
     +mq-desktop
       +baseline($font-size-base, $lineheight: 2, $below: 1)
 
 .list-portfolio__deck
   color: $color-sub-hdr
   display: none
-  +baseline($font-size-7, $lineheight: 2, $below: 3)
+  +baseline($font-size-6, $below: 3)
   [data-enter='enter-'] &
     display: block
 
 // ---------------------------
 // List of networks in footer
 // ---------------------------
-.list-networks
+.footer
   margin: guv(2) auto
   width: 100%
 
-.list-networks__item
+.footer__item
   color:  $color-sub-hdr
   flex: 0 0 auto
   font-size: $font-size-8
@@ -346,7 +341,6 @@ $hamburger-width: guv(2)
   &:hover
     color:  $color-link-hover
     svg
-      // transform: scale(1.2)
       fill: $color-hdr
   svg
     height: 24px

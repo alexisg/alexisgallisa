@@ -41,10 +41,10 @@
 
 /* Desktop Container */
 .container
-  width: 100%
-  max-width: $grid_max_width
   margin: 0 auto
   padding: 0
+  max-width: $grid_max_width
+  width: 100%
 
 .container--fluid
   max-width: 100%
@@ -97,29 +97,29 @@
 
 // Force all grid children to be 180px. Use the flex 1 1 auto to let them shrink and grow as needed to make a grid that takes up the entire page.
 // Use max-width on desktop size for now since at smaller sizes this column actually needs to become 100% width
-.grid--120
-  > *
-    flex: 1 0 auto
-    max-width: 50%
-    width: 120px
+// .grid--120
+//   > *
+//     flex: 1 0 auto
+//     max-width: 50%
+//     width: 120px
 
-.grid--180
-  > *
-    flex: 1 0 auto
-    max-width: 50%
-    width: 180px
+// .grid--180
+//   > *
+//     flex: 1 0 auto
+//     max-width: 50%
+//     width: 180px
 
-.grid--240
-  > *
-    flex: 1 0 auto
-    max-width: 50%
-    width: 240px
+// .grid--240
+//   > *
+//     flex: 1 0 auto
+//     max-width: 50%
+//     width: 240px
 
-.grid--300
-  > *
-    flex: 1 0 auto
-    max-width: 50%
-    width: 300px
+// .grid--300
+//   > *
+//     flex: 1 0 auto
+//     max-width: 50%
+//     width: 300px
 
 /* grid Modifiers */
 // Set child elements of grid to be spaced at half our standard gutter width
@@ -165,8 +165,8 @@
 
 /* Create the .col-columns base sizes */
 @for $i from 1 through $grid-columns
-  .col-xs-#{$i}
-    width: percentage($i/$grid-columns)
+  // .col-xs-#{$i}
+  //   width: percentage($i/$grid-columns)
   .grid--xs-1-#{$i} > *
     width: percentage(1/$i)
 
@@ -174,7 +174,7 @@
 @each $slug, $size in $breakpoints
   @media (min-width: #{$size})
     @for $i from 1 through $grid-columns
-      .col-#{$slug}-#{$i}
-        width: percentage($i/$grid-columns)
+      // .col-#{$slug}-#{$i}
+      //   width: percentage($i/$grid-columns)
       .grid--#{$slug}-1-#{$i} > *
         width: percentage(1/$i)

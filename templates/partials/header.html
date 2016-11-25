@@ -1,14 +1,14 @@
-{% set curUrl = getCurrentUrl() %}
-
-    <div class="portrait transition">
-      <div class="portrait__img"><img src="/static/images/pic300.jpg" alt="Portrait image"></div>
-      <span class="portrait__icon icon icon--andre"></span>
-    </div>
+  <div class="portrait transition">
+    <div class="portrait__img"><img src="/static/images/pic300.jpg" alt="Portrait image"></div>
+    <span class="portrait__icon icon icon--andre"></span>
+  </div>
 
   <h1 class="logo align-center">
-    <a href="/">
+    {% if !home_page %}
+      <a href="/">Alexis Gallis&aacute;</a>
+    {% else %}
       Alexis Gallis&aacute;
-    </a>
+    {% endif %}
   </h1>
 
   {% if home_page %}
@@ -17,38 +17,3 @@
       Currenly working as the Head of Core Product Design at <a href="https://twitch.tv">Twitch</a>. I lead a team developing our CSS framework which is focused on making designers/developers build faster more consistent features while pushing on better accessbility for all users. Previously I was the Creative Technical Director at CBSi Games, where I led the redesigns of <a href="http://gamespot.com">GameSpot</a> and <a href="http://giantbomb.com">Giant Bomb</a>.
     </p>
   {% endif %}
-
-  <nav {% if !home_page %}class="nav-portfolio transition"{% endif %}>
-    <ul class="
-      {% if home_page %}
-         grid grid--xs-1-1 grid--sm-1-2 list-portfolio
-      {% else %}
-         container flex flex--spaceBetween flex--stretch list-portfolio list-portfolio--row
-      {% endif %}
-    ">
-      {% if !home_page %}
-        <li class="list-portfolio__toggle list-portfolio__item">
-          <button class="js-nav-toggle no-smoothstate list-portfolio__hdr"><span></span> Portfolio</button>
-        </li>
-      {% endif %}
-      {% for item in data %}
-        <li class="list-portfolio__item">
-          <a href="{{ url(item) }}" class="list-portfolio__link {% if curUrl == url(item)') %}list-portfolio__link--active{% endif %}">
-            {% if home_page %}
-              <div class="transition transition--fall transition--fadein">
-                <div class="js-media-hold list-portfolio__media shadow aspect aspect--square"
-                  data-video="{{item.video_small.url}}"
-                  data-img="{{ item.image|imageCrop(580,580) }}"
-                  data-title="{{ item.name }}"
-                >
-                </div>
-              </div>
-            {% endif %}
-            <h2 class="list-portfolio__hdr list-portfolio__hide">{{item.name}}</h2>
-            <p class="list-portfolio__deck list-portfolio__hide">{{item.deck|raw}}</p>
-          </a>
-        </li>
-        {% endfor %}
-    </ul>
-  </nav>
-

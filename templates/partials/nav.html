@@ -1,0 +1,34 @@
+{% set curUrl = getCurrentUrl() %}
+<nav {% if !home_page %}class="nav-portfolio transition"{% endif %}>
+  <ul class="
+    {% if home_page %}
+       grid grid--xs-1-1 grid--sm-1-2 list-portfolio
+    {% else %}
+       container flex flex--spaceBetween flex--stretch list-portfolio list-portfolio--row
+    {% endif %}
+  ">
+    {% if !home_page %}
+      <li class="list-portfolio__toggle list-portfolio__item">
+        <button class="js-nav-toggle no-smoothstate list-portfolio__hdr"><span></span> Portfolio</button>
+      </li>
+    {% endif %}
+    {% for item in data %}
+      <li class="list-portfolio__item">
+        <a href="{{ url(item) }}" class="list-portfolio__link {% if curUrl == url(item)') %}list-portfolio__link--active{% endif %}">
+          {% if home_page %}
+            <div class="transition transition--fall transition--fadein">
+              <div class="js-media-hold list-portfolio__media shadow aspect aspect--square"
+                data-video="{{item.video_small.url}}"
+                data-img="{{ item.image|imageCrop(580,580) }}"
+                data-title="{{ item.name }}"
+              >
+              </div>
+            </div>
+          {% endif %}
+          <h2 class="list-portfolio__hdr list-portfolio__hide">{{item.name}}</h2>
+          <p class="list-portfolio__deck list-portfolio__hide">{{item.deck|raw}}</p>
+        </a>
+      </li>
+      {% endfor %}
+  </ul>
+</nav>

@@ -2,7 +2,7 @@
 // MIXINS
 //===============================================
 
-@mixin show-baseline($color: rgba(cyan,.2)) {
+@mixin show-baseline($color: rgba(cyan,.75)) {
   position: relative;
   &:before {
     content: '';

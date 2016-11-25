@@ -32,18 +32,15 @@
     <!-- SVG Use sprite -->
     {% include "static/images/sprite.svg" %}
 
-    <div id="js-main" class="container container--sm" data-page="home">
-    {% block wallpaper %}{% endblock %}
-      <div class="row">
-        <div class="col-xs-12">
-          {% include "templates/partials/header.html" %}
-        </div>
-      </div>
-
-      <div class="row"><div id="js-fade" class="col-xs-12 transition transition--fadein">
-        {% block content %}{% endblock %}
+    <div id="js-main" data-page="home">
+      <div class="container">
+        {% include "templates/partials/header.html" %}
+        {% include "templates/partials/nav.html" %}
+        <article class="transition transition--fadein">
+          {% block content %}{% endblock %}
+        </article>
         {% include "templates/partials/footer.html" %}
-      </div></div>
+      </div>
     </div>
 
     <!-- build:js /static/js/main-min.js -->

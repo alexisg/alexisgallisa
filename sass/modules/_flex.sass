@@ -104,12 +104,12 @@
 // This allows us to set flex-order in a mobile first fashion.
 // Suggested use if you need to overwrite is to set the mobile first
 // option first (--xs) and then reset for desktop use with our other breakpoints
-@for $i from 0 through 4
-  .flex__item--order-xs-#{$i}
-    order: $i
+// @for $i from 0 through 4
+//   .flex__item--order-xs-#{$i}
+//     order: $i
 
-@each $slug, $size in $breakpoints
-  @media (min-width: #{$size})
-    @for $i from 1 through 4
-      .flex__item--order-#{$slug}-#{$i}
-        order: $i
+// @each $slug, $size in $breakpoints
+//   @media (min-width: #{$size})
+//     @for $i from 1 through 4
+//       .flex__item--order-#{$slug}-#{$i}
+//         order: $i

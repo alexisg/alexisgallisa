@@ -65,7 +65,7 @@ module.exports = function(grunt) {
         options: {
           map: false,
           processors: [
-            // require("css-mqpacker"),
+            require("css-mqpacker"),
             require('autoprefixer')({browsers: 'last 2 versions,ie 8, ie 9'})
           ]
         }
