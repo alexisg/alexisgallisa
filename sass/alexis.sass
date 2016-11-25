@@ -246,7 +246,7 @@ body::-webkit-scrollbar-thumb
 
 .list-portfolio__hdr
   color: $color-hdr
-  +baseline($font-size-5, $below: 0)
+  +baseline($font-size-5, $lineheight: 3, $below: 0)
   a:hover &
     color: $color-link-hover
   .list-portfolio--row &
@@ -255,7 +255,7 @@ body::-webkit-scrollbar-thumb
 .list-portfolio__deck
   color: $color-sub-hdr
   display: none
-  +baseline($font-size-7, $below: 2)
+  +baseline($font-size-7, $lineheight: 2, $below: 2)
   [data-enter='enter-'] &
     display: block
 
