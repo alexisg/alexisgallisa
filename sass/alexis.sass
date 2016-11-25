@@ -9,6 +9,7 @@
 @import modules/baseline
 @import modules/flex
 @import modules/grid
+@import modules/responsive
 @import modules/transitions
 @import modules/helpers
 
@@ -20,7 +21,7 @@
 body
   background: $color-body
   color: $color-text
-  font-family: 'AvenirLTPro-Light'
+  font-family: 'AvenirPro'
   font-weight: normal
   font-style: normal
   padding: guv(3) guv(2)
@@ -28,6 +29,13 @@ body
 
 img,video
   max-width: 100%
+
+button
+  font-family: inherit
+  background: none
+  border: 0
+  &::-moz-focus-inner
+    border: 0
 
 // ---------------------------
 // Typography
@@ -42,17 +50,18 @@ h1
   +font-smooth
 
 h2
-  color: darken($color-hdr,4%)
+  color: $color-hdr
+  font-weight: bold
 
 h3
-  color: darken($color-hdr,8%)
+  color: $color-hdr
+  font-weight: bold
 
 h4
-  color: darken($color-hdr,12%)
+  color: $color-sub-hdr
 
 h5
-  color: darken($color-hdr,16%)
-
+  color: $color-sub-hdr
 
 
 a
@@ -172,54 +181,112 @@ body::-webkit-scrollbar-thumb
 // ---------------------------
 // Main portfolio grid
 // ---------------------------
+.nav-portfolio
+  max-height: guv(5)
+  overflow: hidden
+  transition-duration: .3s
+  .is-navbar-active &
+    max-height: guv(34)
+  +mq-desktop
+    height: auto
+    overflow: visible
+
 .list-portfolio
-  margin-top: 0
+  margin-top: guv(1)
   margin-bottom: 0
   text-align: center
-  a,img,video
+  a
     display: block
 
+.list-portfolio--row
+  display: flex
+  align-items: stretch
+  justify-content: space-between
+  flex-direction: column
+  flex-wrap: wrap
+  text-align: left
+  +mq-desktop
+    flex-direction: row
+
 .list-portfolio__item
+  padding-top: 0
+  margin-bottom: 0
+
+$hamburger-height: 4px
+$hamburger-width: guv(2)
+
+.list-portfolio__toggle
+  box-shadow: rgba(white,.1) 0 -1px 0 0 inset,rgba(white,.1) 0 1px 0 0 inset
   margin-bottom: guv(1)
   padding-top: 0
-
-.list-portfolio--row
-  background: $color-body
   position: relative
-  &:after,&:before
-    content: ''
-    background: $color-body
+  +mq-desktop
+    display: none
+  button
+    color: $color-hdr
+    padding-left: guv(3)
+    position: relative
+    text-align: left
+    top: 2px
+    width: 100%
+    &:focus
+      outline: none
+    &:hover
+      cursor: pointer
+  span, span:before, span:after
+    height: $hamburger-height
+    width: $hamburger-width
+    background: $color-hdr
     position: absolute
-    left: 100%
-    bottom: 0
-    top: 0
-    width: guv(2)
-  &:before
-    left: guv(-2)
+    display: block
+    content: ''
+    transition: all .3s ease-in-out
+    transform-origin: 50% 50%
+    left: 0
+    top: 50%
+    transform: translateY(-50%)
+    margin-top: -3px
+  span:before
+    margin-top: $hamburger-height * 2 * -1
+  span:after
+    margin-top: $hamburger-height * 2
+
+  .is-navbar-active &
+    span
+      background-color: transparent
+    span:before, span:after
+      margin-top: -1px
+    span:before
+      transform: rotate(45deg)
+    span:after
+      transform: rotate(-45deg)
 
 .list-portfolio__link
   &:hover
     cursor: pointer
+
+.list-portfolio__spacer
+  border-right: 1px solid rgba($color-text,.25)
 
 .list-portfolio__link--active
   color: $color-link-hover
   position: relative
   .list-portfolio__hdr
     color: $color-link
-  &:after
-    content: ''
-    background: $color-link
-    position: absolute
-    left: 0
-    right: 0
-    top: 100%
-    margin-top: -1px
-    height: 1px
-    animation: spread .2s
-    transition: all .2s
-    .transition-end &
-      left: 50%
-      right: 50%
+  +mq-desktop
+    &:after
+      content: ''
+      background: $color-link
+      position: absolute
+      left: 0
+      right: 0
+      top: 100%
+      height: 1px
+      animation: spread .2s
+      transition: all .2s
+      .transition-end &
+        left: 50%
+        right: 50%
 
 @keyframes spread
   0%
@@ -232,30 +299,34 @@ body::-webkit-scrollbar-thumb
 .list-portfolio__media
   margin-bottom: guv(1)
 
-
 .list-portfolio__hide
   margin-left: auto
   margin-right: auto
   max-width: 100%
   overflow: hidden
-  transition: all .3s cubic-bezier(0.465, 0.183, 0.153, 0.946)
+  transition: width .3s cubic-bezier(0.465, 0.183, 0.153, 0.946), opacity .3s cubic-bezier(0.465, 0.183, 0.153, 0.946)
   .transition-end[data-exit='exit-'] &
     max-width: 0
     opacity: 0
     white-space: nowrap
 
 .list-portfolio__hdr
-  color: $color-hdr
+  white-space: nowrap
   +baseline($font-size-5, $lineheight: 3, $below: 0)
   a:hover &
     color: $color-link-hover
   .list-portfolio--row &
-    +baseline($font-size-base, $lineheight: 3, $below: 1)
+    font-size: $font-size-4
+    line-height: 4rem
+    padding-top: 0
+    margin-bottom: 0
+    +mq-desktop
+      +baseline($font-size-base, $lineheight: 2, $below: 1)
 
 .list-portfolio__deck
   color: $color-sub-hdr
   display: none
-  +baseline($font-size-7, $lineheight: 2, $below: 2)
+  +baseline($font-size-7, $lineheight: 2, $below: 3)
   [data-enter='enter-'] &
     display: block
 

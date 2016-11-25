@@ -6,79 +6,87 @@ var getEnterExitString = function(e) {
   return url;
 }
 
+//Init the mobile nav function
+var navToggle = function (e) {
+  $('body').toggleClass('is-navbar-active');
+  e.preventDefault();
+}
+
+// Force collapes of the navbar on anchor links
+var removeToggle = function (e) {
+  $( "a" ).click(function() {
+    $('body').removeClass('is-navbar-active');
+  });
+}
+
+// Video loader if you are on not on a touch device
+var videoLoad = function() {
+  $('.js-media-hold').each(function() {
+    var url_video = $(this).attr("data-video");
+    if (Modernizr.video.h264 && url_video) {
+      $(this).append("<video playsinline muted autoplay loop class='aspect__fill'><source src='" + $(this).attr("data-video") + " 'type='video/mp4'></video>");
+    } else {
+      $(this).append("<img class='aspect__fill' src='" + $(this).attr("data-img") + " ' alt='" + $(this).attr("data-title") + " ' />");
+    }
+  })
+};
 
 // On Document Ready
 $(function() {
 
-  $('#js-main').attr('data-enter', getEnterExitString('enter'));
+  'use strict';
+  var $body = $('html, body'),
 
-  // Video loader if you are on not on a touch device
-  var videoLoad = function() {
-    $('.js-media-hold').each(function() {
-      var url_video = $(this).attr("data-video");
-      if (!Modernizr.touch && Modernizr.video.h264 && url_video) {
-        $(this).append("<video autoplay loop class='aspect__fill'><source src='" + $(this).attr("data-video") + " 'type='video/mp4'></video>");
-      } else {
-        $(this).append("<img class='aspect__fill' src='" + $(this).attr("data-img") + " ' alt='" + $(this).attr("data-title") + " ' />");
-      }
-    })
-  };
+  smoothState = $('#js-main').smoothState({
 
-  // If not on a touch device use smoothState
-  if (!Modernizr.touch) {
-    'use strict';
-    var $body = $('html, body'),
+    //smoothState options
+    prefetch: true,
+    pageCacheSize: 8,
+    blacklist: ".no-smoothstate, [target], [data-type='image'] a",
+    scroll: false,
 
-    smoothState = $('#js-main').smoothState({
-
-      //smoothState options
-      prefetch: true,
-      pageCacheSize: 8,
-      blacklist: ".no-smoothstate, [target], [data-type='image'] a",
-      scroll: false,
-
-      onStart: {
-        duration: 600,
-        render: function($container) {
-          $('#js-main').attr('data-exit', getEnterExitString('exit'));
-          // Scroll page back up
-          $body.animate({ scrollTop: 0 }, 600);
-          // Set classes for animation fading
-          $('#js-main')
-            .removeClass('transition-start')
-            .addClass('transition-end');
-        }
-      },
-
-      // OnBefore
-      onBefore: function($currentTarget, $content) {
-        // Create a data attribute called exit- which lets the next scene know where it came from.
-        // Get the string value from getEnterExitString
-        // $('#js-main').attr('data-exit', getEnterExitString('exit'));
-      },
-
-      onAfter: function($container, $newContent) {
-        // Add the transition start class for transitions duh
+    onStart: {
+      duration: 600,
+      render: function($container) {
+        $('#js-main').attr('data-exit', getEnterExitString('exit'));
+        // Scroll page back up
+        $body.animate({ scrollTop: 0 }, 600);
+        // Set classes for animation fading
         $('#js-main')
-          .removeClass('transition-end')
-          .addClass('transition-start')
-          .attr('data-enter', getEnterExitString('enter'));
-        videoLoad();
-        stickyLoad();
+          .removeClass('transition-start')
+          .addClass('transition-end');
       }
-    }).data('smoothState');
+    },
 
-  }
+    // OnBefore
+    onBefore: function($currentTarget, $content) {
+    },
 
-  var stickyLoad = function() {
-    $(".sticky-nav").pin()
-  }
+    onAfter: function($container, $newContent) {
+      // Add the transition start class for transitions duh
+      $('#js-main')
+        .removeClass('transition-end')
+        .addClass('transition-start')
+        .attr('data-enter', getEnterExitString('enter'));
+      videoLoad();
+      removeToggle();
+    }
+  }).data('smoothState');
+
+  // On ready functions that need to be fired before smoothState is ready
 
   // Kick off video load function
-  stickyLoad();
   videoLoad();
+  removeToggle();
+
   // Kick off the animation class on first load since smoothstate is not yet available
-  $('#js-main').addClass('transition-start');
-  $('#js-main').smoothState();
+  $('#js-main')
+    .attr('data-enter', getEnterExitString('enter'))
+    .addClass('transition-start')
+    .smoothState();
+
+  // Set up navToggle Function
+  $(document).on('click', '.js-nav-toggle', navToggle);
 
 });
+
