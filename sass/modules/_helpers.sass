@@ -3,26 +3,11 @@
    helpers loaded at the end of the
    stylesheet to help overwrite styles */
 
-.clearfix
-  +clearfix
-
-// Shows/Hides
-.hide
-  display: none !important
-
 // Text ellipsis
 .ellipsis
   text-overflow: ellipsis
   overflow: hidden
   white-space: nowrap
-
-// Inherit font color
-// @TODO: rename to cl-inherit
-.inherit-color
-  color: inherit
-
-  &:hover
-    color: inherit
 
 // Floats
 .float-right
@@ -30,6 +15,31 @@
 
 .float-left
   float: left
+
+.clearfix
+  +clearfix
+
+// Display
+.inline
+  display: inline
+
+.inline-block
+  display: inline-block
+
+.block
+  display: block
+
+.hide
+  display: none !important
+
+//Text align
+.align-left
+  text-align: left
+.align-center
+  text-align: center
+.align-right
+  text-align: right
+
 
 // Margins and Padding Helpers
 @for $i from 0 through 10
@@ -81,36 +91,3 @@
   .pd-y-#{$i}
     padding-top: guv($i) !important
     padding-bottom: guv($i) !important
-
-// Display
-.inline
-  display: inline
-
-.inline-block
-  display: inline-block
-
-.block
-  display: block
-
-// Positioning
-.pos-relative
-  position: relative
-
-.pos-absolute
-  position: absolute
-
-.pos-fixed
-  position: fixed
-
-.top-0
-  top: 0
-
-.bottom-0
-  bottom: 0
-
-.left-0
-  left: 0
-
-.right-0
-  right: 0
-

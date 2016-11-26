@@ -18,7 +18,12 @@
 
 {% block content %}
 
-  <div class="js-media-hold aspect aspect--square shadow shadow--lg mg-y-2" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(1280,1280) }}"></div>
+  <div class="js-media-hold aspect aspect--square shadow shadow--lg mg-y-2"
+    data-video="{{item.video_large.url}}"
+    data-img="{{ item.image|imageCrop(1280,1280) }}"
+    data-title="{{item.name}}"
+    data-id="{{item.name|replace(' ', '-', 'g') }}"
+  ></div>
 
   <h3>{{ item.name }}</h3>
 

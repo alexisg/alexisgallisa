@@ -18,9 +18,10 @@
           {% if home_page %}
             <div class="transition transition--fall transition--fadein">
               <div class="js-media-hold list-portfolio__media shadow aspect aspect--square"
-                data-video="{{item.video_small.url}}"
+                data-video="{{item.video_medium.url}}"
                 data-img="{{ item.image|imageCrop(580,580) }}"
                 data-title="{{ item.name }}"
+                data-id="{{item.name|replace(' ', '-', 'g') }}"
               >
               </div>
             </div>

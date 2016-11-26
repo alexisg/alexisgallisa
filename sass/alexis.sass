@@ -1,10 +1,11 @@
+/* Vendor Import */
 @import modular-scale/stylesheets/modular-scale
 
-/* Non Vendor Styles */
+/* Native Imports */
+@import modules/mixin
 @import modules/fontface
 @import modules/measure
 @import modules/variables
-@import modules/mixin
 @import modules/aspect
 @import modules/baseline
 @import modules/flex
@@ -78,16 +79,8 @@ ul
   text-align: left
 
 // ---------------------------
-// Helpers
+// Shadows
 // ---------------------------
-.align-left
-  text-align: left
-.align-center
-  text-align: center
-.align-right
-  text-align: right
-.sticky-nav
-  z-index: 999
 .shadow
   box-shadow: hsla($hue, 5%, 5%, .25) 0 10px 15px -5px
 .shadow--lg
@@ -217,7 +210,7 @@ $hamburger-height: 4px
 $hamburger-width: guv(2)
 
 .list-portfolio__toggle
-  box-shadow: rgba($color-hdr,.1) 0 -1px 0 0 inset,rgba($color-hdr,.1) 0 1px 0 0 inset
+  box-shadow: rgba(black,.1) 0 -1px 0 0 inset,rgba(black,.1) 0 1px 0 0 inset
   margin-bottom: guv(1)
   padding-top: 0
   position: relative
