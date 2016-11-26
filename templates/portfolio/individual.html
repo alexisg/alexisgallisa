@@ -50,7 +50,7 @@
       {% for image in item.gallery %}
         <li class="mg-b-2">
           {# You can get the raw image url by accessing image.url #}
-          <a href="{{ image.url }}" class="no-smoothstate"><img src="{{ image|imageSize(744) }}" class="shadow shadow--lg"></a>
+          <a href="{{ image.url }}" class="no-smoothstate"><img src="{{ image.url }}" class="shadow shadow--lg"></a>
           <div>{{ image.caption }}</div>
         </li>
       {% endfor %}
