@@ -1,8 +1,13 @@
 {% set curUrl = getCurrentUrl() %}
-
-{{first}}
-
-<nav {% if !home_page %}class="nav-portfolio-hold transition"{% endif %}>
+<nav
+  {% if !home_page %}
+    class="nav-portfolio-hold transition
+    {% if slim %}
+      hide-mobile
+    {% endif %}
+    "
+  {% endif %}
+  >
   <ul class="
     {% if home_page %}
        grid grid--xs-1-1 grid--sm-1-2 nav-portfolio

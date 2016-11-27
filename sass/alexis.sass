@@ -17,8 +17,11 @@
 @import modules/transitions
 @import modules/helpers
 // Components
+@import components/icons
+@import components/header
 @import components/nav
 @import components/footer
+
 
 *
   margin: 0
@@ -81,93 +84,9 @@ a
   &:hover
     color: $color-link-hover
     cursor: pointer
+  li &
+    display: block
 
 ul
   list-style: none
   text-align: left
-
-// ---------------------------
-// Shadows
-// ---------------------------
-.shadow
-  box-shadow: hsla($hue, 50%, 20%, .25) 0 8px 12px -6px
-
-.shadow--lg
-  box-shadow: hsla($hue, 50%, 20%, .30) 0 16px 24px -12px
-
-// ---------------------------
-// Logo and portrait
-// ---------------------------
-.header
-  &:hover
-    .icon--andre
-      background-position: 0 -70px
-
-.header__logo
-  margin-left: auto
-  margin-right: auto
-  overflow: hidden
-  white-space: nowrap
-  transition: color .3s
-  a:hover &
-    color: $color-link-hover
-
-.header__intro
-  +baseline($below: 3)
-  a:hover
-    text-decoration: underline
-
-.portrait
-  position: relative
-  margin: 0 auto
-
-.portrait__img
-  display: block
-  margin: 0 auto
-  position: relative
-  height: guv(9)
-  width: guv(9)
-
-  &:before
-    content: ''
-    position: absolute
-    border-radius: 100%
-    display: block
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
-  img
-    border-radius: 100%
-
-.portrait__icon
-  position: absolute
-  left: 50%
-  bottom: -14px
-  margin-left: 36px
-
-
-// ---------------------------
-// Icons
-// ---------------------------
-.icon
-  background-repeat: no-repeat
-  background-size: auto 100%
-  display: inline-block
-  overflow: hidden
-  height: 32px
-  width: 32px
-  vertical-align: middle
-
-.icon--andre
-  background: url('/static/images/icon-andre.png') 0 0
-  background-size: 24px auto
-  width: 24px
-  height: 46px
-  &:hover
-    background-position: 0 -70px
-  +retina
-    background-image: url('/static/images/icon-andre@2x.png')
-
-.icon--doc
-  background-image: url('/static/images/icon-door-32x32.png')

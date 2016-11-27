@@ -3,20 +3,24 @@
   {% include "templates/partials/nav.html" with {slim: true} %}
 {% endif %}
 <nav class="flex flex--inline flex--horizontalCenter footer">
-  <a href="http://dribbble.com/alexisg" onclick="trackOutboundLink('http://dribbble.com/alexisg'); return false;" class="footer__item">
-    <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dribbble"></use></svg>
-    Dribbble
-  </a>
-  <a href="http://codepen.io/alexisg/" onclick="trackOutboundLink('http://codepen.io/alexisg/'); return false;" class="footer__item">
-    <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-codepen"></use></svg>
+  <a href="http://codepen.io/alexisg/" onclick="trackOutboundLink('http://codepen.io/alexisg/'); return false;" target="_blank" class="footer__item no-smoothstate">
+    <svg class="footer__icon icon icon--codepen"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-codepen"></use></svg>
     CodePen
   </a>
-  <a href="http://twitter.com/alexisg" onclick="trackOutboundLink('http://twitter.com/alexisg'); return false;" class="footer__item">
-    <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use></svg>
-    Twitter
+  <a href="http://dribbble.com/alexisg" onclick="trackOutboundLink('http://dribbble.com/alexisg'); return false;" target="_blank" class="footer__item no-smoothstate">
+    <svg class="footer__icon icon icon--dribbble"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dribbble"></use></svg>
+    Dribbble
   </a>
-  <a href="https://www.linkedin.com/in/alexisgallisa" onclick="trackOutboundLink('https://www.linkedin.com/in/alexisgallisa'); return false;" class="footer__item">
-    <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-linkedin"></use></svg>
+  <a href="https://github.com/alexisg?utf8=%E2%9C%93&tab=repositories&q=&type=source&language=" onclick="trackOutboundLink('https://github.com/alexisg?utf8=%E2%9C%93&tab=repositories&q=&type=source&language='); return false;" target="_blank" class="footer__item no-smoothstate">
+    <svg class="footer__icon icon icon--github"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-github"></use></svg>
+    Github
+  </a>
+  <a href="https://www.linkedin.com/in/alexisgallisa" onclick="trackOutboundLink('https://www.linkedin.com/in/alexisgallisa'); return false;" target="_blank" class="footer__item no-smoothstate">
+    <svg class="footer__icon icon icon--linkedin"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-linkedin"></use></svg>
     LinkedIn
+  </a>
+  <a href="http://twitter.com/alexisg" onclick="trackOutboundLink('http://twitter.com/alexisg'); return false;" target="_blank" class="footer__item no-smoothstate">
+    <svg class="footer__icon icon icon--twitter"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use></svg>
+    Twitter
   </a>
 </nav>
