@@ -1,9 +1,7 @@
 {
   "name": "alexisgallisa",
   "version": "0.0.1",
-  "dependencies": {
-    "normalize-css": "~3.0.3",
-    "modular-scale": "~2.1.1",
-    "headhesive": "~1.2.4"
+  "devDependencies": {
+    "modular-scale": "^2.1.3"
   }
 }
