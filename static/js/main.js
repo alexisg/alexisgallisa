@@ -13,9 +13,12 @@ var navToggle = function (e) {
 }
 
 // Force collapes of the navbar on anchor links
-var removeToggle = function (e) {
+var anchorSetup = function (e) {
   $( "a" ).click(function() {
     $('body').removeClass('is-navbar-active');
+  });
+  $( ".js-scroll-top" ).click(function() {
+    $('body').animate({ scrollTop: 0 }, 600);
   });
 }
 
@@ -69,7 +72,7 @@ $(function() {
         .addClass('transition-start')
         .attr('data-enter', getEnterExitString('enter'));
       videoLoad();
-      removeToggle();
+      anchorSetup();
     }
   }).data('smoothState');
 
@@ -77,7 +80,7 @@ $(function() {
 
   // Kick off video load function
   videoLoad();
-  removeToggle();
+  anchorSetup();
 
   // Kick off the animation class on first load since smoothstate is not yet available
   $('#js-main')

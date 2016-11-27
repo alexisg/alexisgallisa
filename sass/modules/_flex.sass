@@ -9,8 +9,8 @@
 //   <div class="flex__item">.flex__item 2</div>
 //   <div class="flex__item">.flex__item 3</div>
 // </div>
-// <strong>flex flex--rowReverse</strong>
-// <div class="flex flex--rowReverse show-grid">
+// <strong>flex flex--row-reverse</strong>
+// <div class="flex flex--row-reverse show-grid">
 //   <div class="flex__item">.flex__item 1</div>
 //   <div class="flex__item">.flex__item 2</div>
 //   <div class="flex__item">.flex__item 3</div>
@@ -21,8 +21,8 @@
 //   <div class="flex__item">.flex__item 2</div>
 //   <div class="flex__item">.flex__item 3</div>
 // </div>
-// <strong>flex flex--columnReverse</strong>
-// <div class="flex flex--columnReverse show-grid">
+// <strong>flex flex--column-reverse</strong>
+// <div class="flex flex--column-reverse show-grid">
 //   <div class="flex__item">.flex__item 1</div>
 //   <div class="flex__item">.flex__item 2</div>
 //   <div class="flex__item">.flex__item 3</div>
@@ -54,21 +54,21 @@
   flex-direction: column
 
 // Reverse rows or columns
-.flex--rowReverse
+.flex--row-reverse
   flex-direction: row-reverse
-.flex--columnReverse
+.flex--column-reverse
   flex-direction: column-reverse
 
 //In case we need to force it tall
-.flex--fullHeight
+.flex--full-height
   height: 100%
 
 // Affects the stretch or position of items inside container
 // All items will align vertically in each row.
-.flex--verticalCenter
+.flex--vertical-center
   align-items: center
 // All items will align to the bottom of each row.
-.flex--verticalEnd
+.flex--vertical-end
   align-items: flex-end
 // All items will stretch to fill all available space
 .flex--stretch
@@ -76,11 +76,11 @@
 
 // More info on justify
 // https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
-.flex--horizontalCenter
+.flex--horizontal-center
   justify-content: center
-.flex--horizontalEnd
+.flex--horizontal-end
   justify-content: flex-end
-.flex--spaceBetween
+.flex--space-between
   justify-content: space-between
 
 // Flex Items
@@ -90,10 +90,10 @@
 // By default our flex items are set to not grow as the W3 standard
 .flex__item--grow
   flex-grow: 1
-.flex__item--noGrow
+.flex__item--no-grow
   flex-grow: 0
 // Opposite of above
-.flex__item--noShrink
+.flex__item--no-shrink
   flex-shrink: 0
 // Alight to the right
 .flex__item--end
