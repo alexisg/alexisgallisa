@@ -6,13 +6,15 @@ var getEnterExitString = function(e) {
   return url;
 }
 
-//Init the mobile nav function
+// Smoothstate needs typicall document onready functions to be fired again once a new page loads. So we move typical actions like this into their own functions and call them with the smooothState OnAfter function.
+
+// Init the mobile nav function
 var navToggle = function (e) {
   $('body').toggleClass('is-navbar-active');
   e.preventDefault();
 }
 
-// Force collapes of the navbar on anchor links
+// Force collapes of the navbar on anchor links and scroll top function
 var anchorSetup = function (e) {
   $( "a" ).click(function() {
     $('body').removeClass('is-navbar-active');
