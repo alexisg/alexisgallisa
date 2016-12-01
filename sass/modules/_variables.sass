@@ -1,7 +1,7 @@
 // Baseline variables
 $base-font-size               : 16
-$base-cap-height              : 0.51
-$base-line-height             : 12 // Half of desired lineheight
+$base-cap-height              : 0.46
+$base-line-height             : 14 // Half of desired lineheight
 $base-unit                    : 1rem
 
 // Modular Scale Variables
@@ -28,15 +28,6 @@ $font-size-8                  : ms-to-rem($font-size-8)
 
 $font-size-base               : ms-to-rem($base-font-size)
 
-// $font-size-1                  : 36
-// $font-size-2                  : 24
-// $font-size-3                  : 21
-// $font-size-4                  : 18
-// $font-size-5                  : 16
-// $font-size-6                  : 14
-// $font-size-7                  : 12
-// $font-size-8                  : 11
-
 /* Add all font-sizes to a map list so they are
    available to us in the future */
 $font-sizes: $font-size-1, $font-size-2, $font-size-3, $font-size-4, $font-size-5, $font-size-6, $font-size-7, $font-size-8
@@ -57,7 +48,9 @@ $grid-gutter-width            : 1.5rem
 $grid-gutter-width-lg         : 2rem
 $grid-gutter-width-sm         : 1.0rem
 $grid-gutter-width-xs         : 0.5rem
-$grid-max-width               : 768px
+// Since we are using sqaures for most of our main images we want the grid max to be a factor of our baseline height
+// This ensures our larger images/videos will stay on the baseline
+$grid-max-width               : $base-line-height * 55 + 0px
 $break-sm                     : 768px
 $break-md                     : 1024px
 $break-lg                     : 1200px
@@ -70,7 +63,7 @@ $color-body                   : hsl($hue, 10%, 96%)
 $color-text                   : hsl($hue, 20%, 20%)
 $color-hdr                    : hsl($hue, 20%, 20%)
 $color-sub-hdr                : hsl($hue, 20%, 30%)
-
+$color-text-light             : hsl($hue, 20%, 43%) //This is the lightest text color we can use on color-body
 $color-link                   : hsl($hue, 60%, 50%)
 $color-link-hover             : hsl($hue, 80%, 50%)
 

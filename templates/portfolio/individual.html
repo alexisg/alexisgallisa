@@ -32,13 +32,11 @@
   {% endif %}
 
   {% if item.website %}
-    <p>
+    <h5>
       <a href="{{item.website}}" class="no-smoothstate" target="_blank">
         {{item.website|replace('http://', '') }}
       </a>
-    </p>
-  {% else %}
-    <p><em>Website unavailable to public.</em></p>
+    </h5>
   {% endif %}
 
   <hr>

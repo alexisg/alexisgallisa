@@ -5,6 +5,8 @@ html
 // If you want to inject the baseline grid image onto the site, uncomment this
 // body
 //   +show-baseline
+.show-baseline
+  +show-baseline
 
 // Site-wide base styles.
 body
@@ -40,13 +42,21 @@ p
 
 
 // Horizontal Rule
-//––––––––––––––––––––––––––––––––––––––––––––––––––
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+// Use a transparent box with an after element as to not throw off the baseline
 hr
   clear: both
-  margin-top: guv(2)
-  margin-bottom: guv(2)
-  border-width: 0
-  border-top: 1px solid rgba(black,.15)
+  border: 0
+  position: relative
+  height: guv(3)
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    top: 50%
+    right: 0
+    height: 1px
+    background: rgba(black,.15)
 
 // Lists
 //––––––––––––––––––––––––––––––––––––––––––––––––––

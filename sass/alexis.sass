@@ -54,12 +54,9 @@ button
 // Base Typography addition on our baseline sizing from baseline.sass
 // ------------------------------------------------------------------
 
-h1,h2,h3,h4,h5,h6
-  font-weight: normal
-  font-style: normal
-
 h1
   color: $color-hdr
+  font-weight: bold
 
 h2
   color: $color-hdr
@@ -71,9 +68,15 @@ h3
 
 h4
   color: $color-sub-hdr
+  font-weight: normal
 
 h5
   color: $color-sub-hdr
+  font-weight: normal
+
+h6
+  color: $color-sub-hdr
+  font-weight: normal
 
 a
   color: $color-link
@@ -94,3 +97,12 @@ a
 ul
   list-style: none
   text-align: left
+
+.font-avenir
+  font-family: 'AvenirPro', sans-serif
+
+.font-born, article p
+  font-family: 'Born', serif
+
+.cl-text-light
+  color: $color-text-light
