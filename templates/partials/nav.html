@@ -44,5 +44,28 @@
         </a>
       </li>
       {% endfor %}
+      {# <li class="nav-portfolio__item">
+
+        <a href="/about-alexis" class="nav-portfolio__link {% if curUrl == url(cms.aboutalexis)') %}nav-portfolio__link--active{% endif %}">
+          {% if home_page %}
+            <div class="transition transition--fall transition--fadein">
+              <div class="js-media-hold nav-portfolio__media aspect aspect--square"
+                data-video="{{cms.aboutalexis.video_medium.url}}"
+                data-img="{{ cms.aboutalexis.image|imageCrop(728, 728) }}"
+                data-title="{{ cms.aboutalexis.name }}"
+                data-id="{{cms.aboutalexis.name|replace(' ', '-', 'g') }}"
+              >
+              </div>
+            </div>
+          {% endif %}
+
+          {% if !slim %}
+            <h2 class="nav-portfolio__hdr nav-portfolio__hide">{{cms.aboutalexis.name}}</h2>
+            <p class="nav-portfolio__deck nav-portfolio__hide">{{cms.aboutalexis.deck|raw}}</p>
+          {% else %}
+            <p class="nav-portfolio__hdr nav-portfolio__hide">{{cms.aboutalexis.name}}</p>
+          {% endif %}
+        </a>
+      </li> #}
   </ul>
 </nav>

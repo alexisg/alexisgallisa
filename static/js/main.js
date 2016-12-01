@@ -34,6 +34,13 @@ var videoLoad = function() {
       $(this).append("<img class='aspect__fill' src='" + $(this).attr("data-img") + " ' alt='" + $(this).attr("data-title") + " ' />");
     }
   })
+
+  $("#js-lightgallery").lightGallery({
+    actualSize: true,
+    download: false,
+    mode: 'lg-fade'
+  });
+
 };
 
 // On Document Ready

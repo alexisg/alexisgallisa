@@ -25,6 +25,30 @@
     data-id="{{item.name|replace(' ', '-', 'g') }}"
   ></div>
 
+  {% if item.gallery %}
+    <ul id="js-lightgallery" class="grid grid--gutter-xs
+      {% if item.gallery.length > 4 %}
+        grid--xs-1-{{item.gallery.length/2}}
+      {% else %}
+        grid--xs-1-{{item.gallery.length}}
+      {% endif %}
+      ">
+      {% for image in item.gallery %}
+        <li class="mg-b-2" data-src="{{ image.url }}">
+          <div class="aspect aspect--square aspect--crop-bottom  shadow">
+           {% if item.gallery.length > 4 %}
+            <img src="{{ image|imageSize(494, 'auto') }}" class="aspect__fill ">
+          {% else %}
+            <img src="{{ image|imageSize(364, 'auto') }}" class="aspect__fill ">
+          {% endif %}
+
+
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
   <h3>{{ item.name }}</h3>
 
   {% if item.deck %}
@@ -41,18 +65,9 @@
 
   <hr>
 
+
   {{ item.wysiwyg_text|safe }}
 
-  {% if item.gallery %}
-    <ul>
-      {% for image in item.gallery %}
-        <li class="mg-b-2">
-          {# You can get the raw image url by accessing image.url #}
-          <a href="{{ image.url }}" class="no-smoothstate"><img src="{{ image.url }}" class="shadow shadow--lg"></a>
-          <div>{{ image.caption }}</div>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+
 
 {% endblock %}

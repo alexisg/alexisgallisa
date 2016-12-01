@@ -7,6 +7,9 @@
 @import modules/fontface
 @import modules/measure
 @import modules/variables
+// Vendord
+@import vendor/lightgallery
+
 // Layout
 @import modules/aspect
 @import modules/flex
@@ -44,9 +47,9 @@ img,video
 
 // Reset our buttons. We need to be super careful about killing outline and make sure that we re-introduce it on any new buttons we create.
 button
-  font-family: inherit
   background: none
   border: 0
+  font-family: inherit
   &::-moz-focus-inner
     border: 0
 
@@ -83,14 +86,18 @@ a
   cursor: pointer
   text-decoration: none
   transform-origin: 0 0
-  transition: .3s all
+  transition: .3s color
+
   svg
     fill: $color-link
+
   &:hover
     color: $color-link-hover
     cursor: pointer
+
     svg
       fill: $color-link-hover
+
   li &
     display: block
 
@@ -106,3 +113,13 @@ ul
 
 .cl-text-light
   color: $color-text-light
+
+#lg-zoom-in,
+#lg-zoom-out
+  display: none
+
+.lg-outer .lg-img-wrap
+  padding: 50px 5px
+
+#tota11y-toolbar
+  z-index: 4 !important
