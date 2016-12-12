@@ -8,14 +8,14 @@
       </li>
       {% for object in data %}
         {% if item.preview_url == object.preview_url && data[loop.key - 1] %}
-          <li class="no-wrap flex__item--order-xs-1"><a href="{{ url(data[loop.key - 1]) }}">{{ data[loop.key - 1].name }} &laquo;</a></li>
+          <li class="no-wrap flex__item--order-xs-1"><a href="{{ url(data[loop.key - 1]) }}">&laquo; {{ data[loop.key - 1].name }} </a></li>
         {% elseif item.preview_url == object.preview_url && loop.first %}
-          <li class="no-wrap flex__item--order-xs-1"><a href="{{ url(data[data.length - 1]) }}">{{ data[data.length - 1].name }} &laquo;</a></li>
+          <li class="no-wrap flex__item--order-xs-1"><a href="{{ url(data[data.length - 1]) }}"> &laquo; {{ data[data.length - 1].name }}</a></li>
         {% endif %}
         {% if item.preview_url == object.preview_url && data[loop.key + 1] %}
-          <li class="align-right no-wrap flex__item--order-xs-4"><a href="{{ url(data[loop.key + 1]) }}">&raquo; {{ data[loop.key + 1].name }} </a></li>
+          <li class="align-right no-wrap flex__item--order-xs-4"><a href="{{ url(data[loop.key + 1]) }}"> {{ data[loop.key + 1].name }} &raquo; </a></li>
         {% elseif item.preview_url == object.preview_url && !data[loop.key + 1] %}
-          <li class="align-right no-wrap flex__item--order-xs-4"><a href="{{ url(data[0]) }}">&raquo; {{ data[0].name }}</a></li>
+          <li class="align-right no-wrap flex__item--order-xs-4"><a href="{{ url(data[0]) }}"> {{ data[0].name }} &raquo;</a></li>
         {% endif %}
       {% endfor %}
     </ul>
