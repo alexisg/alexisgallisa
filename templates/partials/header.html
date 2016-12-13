@@ -11,10 +11,9 @@
   {% if !home_page %}</a>{% endif %}
 
   {% if home_page %}
-    <p class="header__intro align-center transition transition--fadein mg-t-1">
-      Design/front-end lead specializing in web/mobile design, design systems, CSS/SASS frameworks, responsive layouts, JS interactions, large site templating and content management implementations. <br>
-      Currenly working as the Head of Core Product Design at <a href="https://twitch.tv">Twitch</a>. I lead a team developing our CSS framework which is focused on making developers build faster more consistent features while pushing on better accessbility for all users. Previously I was the Creative Technical Director at CBSi Games, where I led the redesigns of <a href="http://gamespot.com">GameSpot</a> and <a href="http://giantbomb.com">Giant Bomb</a>. I have been a full time employee on the web since 1999.
-    </p>
+    <section class="header__intro align-center transition transition--fadein">
+      {{ cms.home.wysiwyg_text|safe }}
+    </section>
   {% endif %}
 
 </header>
