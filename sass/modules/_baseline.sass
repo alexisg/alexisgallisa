@@ -1,12 +1,17 @@
 html
-  +set-base-font-size($base-font-size)
+  text-size-adjust: 100%
+  +rootsize
 
 // If you want to inject the baseline grid image onto the site, uncomment this
 // body
-//   &:before
-//     +content-block
-//     +show-baseline
-//     z-index: 99999999999999
+//   +show-baseline
+.show-baseline
+  +show-baseline
+
+// Site-wide base styles.
+body
+  font-size: $font-size-base
+  line-height: 2rem
 
 // Add this class to any container to show the baseline
 .show-baseline
@@ -15,39 +20,43 @@ html
 // Typography
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 h1
-  margin: 0 //reset normalize
-  +align-to-baseline($font-size-1)
+  +baseline($font-size-1,$below: 1)
 
 h2
-  +align-to-baseline($font-size-2)
+  +baseline($font-size-2,$below: 1)
 
 h3
-  +align-to-baseline($font-size-3)
+  +baseline($font-size-3,$below: 1)
 
 h4
-  +align-to-baseline($font-size-4)
+  +baseline($font-size-4,$below: 1)
 
 h5
-  +align-to-baseline($font-size-5)
+  +baseline($font-size-5,$below: 1)
+
+h6
+  +baseline($font-size-6,$below: 1)
 
 p
-  +align-to-baseline($offset-bottom: 1)
-  + h2, + h3, + h4
-    margin-top: guv(2)
-
-h1,h2,h3,h4,h5
-  + p
-    padding-top: 0
+  +baseline($below: 2)
 
 
 // Horizontal Rule
-//––––––––––––––––––––––––––––––––––––––––––––––––––
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+// Use a transparent box with an after element as to not throw off the baseline
 hr
   clear: both
-  margin-top: guv(3)
-  margin-bottom: guv(3)
-  border-width: 0
-  border-top: 1px solid rgba(black,.1)
+  border: 0
+  position: relative
+  height: guv(3)
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    top: 50%
+    right: 0
+    height: 1px
+    background: rgba(black,.15)
 
 // Lists
 //––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -67,7 +76,7 @@ li,dd,dt
 
 
 li
-  +align-to-baseline()
+  +baseline()
 
 // Table styles
 //––––––––––––––––––––––––––––––––––––––––––––––––––

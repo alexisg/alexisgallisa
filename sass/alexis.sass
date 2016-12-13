@@ -1,175 +1,125 @@
-// Modular Scale Bower Import
+/* Vendor Import */
 @import modular-scale/stylesheets/modular-scale
-@import grid.scss/grid
-@import normalize-css/normalize
 
-/* Non Vendor Styles */
-@import modules/variables
+/* Native Imports */
+// Math
 @import modules/mixin
+@import modules/fontface
+@import modules/measure
+@import modules/variables
+// Vendord
+@import vendor/lightgallery
+
+// Layout
 @import modules/aspect
-@import modules/baseline
 @import modules/flex
 @import modules/grid
+@import modules/responsive
+// Pretty
+@import modules/baseline
 @import modules/transitions
+@import modules/helpers
+// Components
+@import components/icons
+@import components/header
+@import components/nav
+@import components/footer
+
 
 *
   margin: 0
   padding: 0
   box-sizing: border-box
 
-
-html
-  background: hsl(210, 20%, 22%)
-
 body
-  background: hsl(220, 20%, 20%)
-  background: linear-gradient(0deg, hsl(210, 20%, 22%), hsl(210, 20%, 18%)) repeat-x
-  color: hsl(210, 20%, 90%)
-  font-family: 'lato',sans-serif
-  font-weight: 300
-  padding: 30px 0
+  background: $color-body
+  color: $color-text
+  font-family: 'AvenirPro', sans-serif
+  font-weight: normal
+  font-style: normal
+  padding: guv(2)
 
+// Avoid img and video elements to grow outside our containters.
+// Allows us to put non width defined images in our containers for maximum flexibility
+// Paint performance gains can be reintroduced by using our aspect classes
 img,video
   max-width: 100%
 
-// ---------------------------
-// Typography
-// ---------------------------
+// Reset our buttons. We need to be super careful about killing outline and make sure that we re-introduce it on any new buttons we create.
+button
+  background: none
+  border: 0
+  font-family: inherit
+  &::-moz-focus-inner
+    border: 0
 
-h1,h2,h3,h4,h5
-  font-weight: 400
+// ------------------------------------------------------------------
+// Base Typography addition on our baseline sizing from baseline.sass
+// ------------------------------------------------------------------
+
+h1
+  color: $color-hdr
+  font-weight: bold
+
+h2
+  color: $color-hdr
+  font-weight: bold
+
+h3
+  color: $color-hdr
+  font-weight: bold
+
+h4
+  color: $color-sub-hdr
+  font-weight: normal
+
+h5
+  color: $color-sub-hdr
+  font-weight: normal
+
+h6
+  color: $color-sub-hdr
+  font-weight: normal
 
 a
-  color: hsl(220, 25%, 75%)
+  color: $color-link
   cursor: pointer
   text-decoration: none
-  transition: all .3s
   transform-origin: 0 0
+  transition: .3s color
+
+  svg
+    fill: $color-link
 
   &:hover
-    color: hsl(0, 0%, 100%)
+    color: $color-link-hover
     cursor: pointer
+
+    svg
+      fill: $color-link-hover
+
+  li &
+    display: block
 
 ul
   list-style: none
   text-align: left
 
-.text-left
-  text-align: left
-.text-center
-  text-align: center
-.text-right
-  text-align: right
-.text-small
-  font-size: .75rem
-.text-subtle
-  opacity: .35
-  color: hsl(210, 20%, 85%)
+.font-avenir
+  font-family: 'AvenirPro', sans-serif
 
+.font-born, article p
+  font-family: 'Born', serif
 
-// ---------------------------
-// Logo, portrait and list
-// ---------------------------
-.logo
-  background: url('/static/images/logo.png') no-repeat 0 0
-  background-size: 100% 100%
-  margin: 0 auto guv(1)
-  overflow: hidden
-  text-indent: 120%
-  height: 100px
-  width: 290px
-  white-space: nowrap
-  +retina
-    background-image: url('/static/images/logo@2x.png')
+.cl-text-light
+  color: $color-text-light
 
-.portrait
-  position: relative
-  &:hover .icon-andre
-    background-position: 0 -70px
+#lg-zoom-in,
+#lg-zoom-out
+  display: none
 
-.portrait__img
-  border-radius: 100%
-  display: block
-  margin: 0 auto
-  overflow: hidden
-  position: relative
-  height: 120px
-  width: 120px
-  img
-    display: block
-  &:before
-    content: ''
-    position: absolute
-    border-radius: 100%
-    display: block
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
-    box-shadow: inset 0 0 0 2px rgba(black,.15)
+.lg-outer .lg-img-wrap
+  padding: 50px 5px
 
-.portrait__icon
-  position: absolute
-  left: 50%
-  bottom: -14px
-  margin-left: 36px
-
-
-// ---------------------------
-// Icons
-// ---------------------------
-.icon
-  display: inline-block
-  overflow: hidden
-
-.icon-andre
-  background: url('/static/images/icn-andre.png') 0 0
-  background-size: 24px auto
-  width: 24px
-  height: 46px
-  &:hover
-    background-position: 0 -70px
-  +retina
-    background-image: url('/static/images/icn-andre@2x.png')
-
-// ---------------------------
-// List of networks in footer
-// ---------------------------
-.list-networks
-  margin: 0 auto guv(2)
-  text-align: center
-  width: 100%
-
-.list-networks__item
-  font-size: .75rem
-  flex: 0 0 auto
-  margin: 0 guv(2)
-  &:hover
-    svg
-      transform: scale(1.2)
-  svg
-    height: 32px
-    width: 32px
-    margin: 0 auto .25rem
-    fill: hsl(220, 0%, 100%)
-    display: block
-    transition: all .15s
-
-// ---------------------------
-// Main portfolio grid
-// ---------------------------
-.list-portfolio
-  margin: guv(2) 0
-  text-align: center
-  a,img,video
-    display: block
-  a:hover
-    cursor: pointer
-  p
-    font-size: .75rem
-    opacity: .75
-
-.list-portfolio__media
-  background: black
-  box-shadow: hsla(220, 50%, 5%,.5) 0 30px 25px -20px
-  margin-bottom: guv(1)
+#tota11y-toolbar
+  z-index: 4 !important

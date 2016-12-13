@@ -12,42 +12,45 @@
 {# This sets our page <title>. It will append this portfolio's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 
+{% block wallpaper %}
+{# <div class="wallpaper" style="background-image: url({{ item.image|imageCrop(1280,1280) }})"></div> #}
+{% endblock %}
+
 {% block content %}
-  <ul class="nav-portfolio flex">
-    {% for object in data %}
-      {% if item.preview_url == object.preview_url && data[loop.key - 1] %}
-        <li><a href="{{ url(data[loop.key - 1]) }}" class="js-anchor-left">&laquo; Prev</a></li>
-      {% endif %}
 
-      {% if item.preview_url == object.preview_url && data[loop.key + 1] %}
-        <li class="text-right"><a href="{{ url(data[loop.key + 1]) }}" class="js-anchor-right">Next &raquo;</a></li>
-      {% elseif item.preview_url == object.preview_url && !data[loop.key + 1] %}
-        <li class="text-right"><a href="{{ url(data[0]) }}" class="js-anchor-right">Next &raquo;</a></li>
-      {% endif %}
-    {% endfor %}
-  </ul>
+  <div class="js-media-hold aspect aspect--square shadow shadow--lg mg-y-2"
+    data-video="{{item.video_large.url}}"
+    data-img="{{ item.image|imageCrop(1280,1280) }}"
+    data-title="{{item.name}}"
+    data-id="{{item.name|replace(' ', '-', 'g') }}"
+  ></div>
 
-  <div class="js-media-hold list-portfolio__media aspect aspect--square" data-video="{{item.video_large.url}}" data-img="{{ item.image|imageCrop(580,580) }}"></div>
-
-  <a href="{{item.website}}">
-    <h2>{{ item.name }}</h2>
-    <p>{{item.website|replace('http://', '') }}</p>
-  </a>
+  <h3>{{ item.name }}</h3>
 
   {% if item.deck %}
-    <h2>{{ item.deck }}</h2>
+    <h4>{{ item.deck|replace('<br>', ', ', 'g') }}</h4>
   {% endif %}
 
-  <ul>
-    {% for image in item.gallery %}
-      <li>
-        {# You can get the raw image url by accessing image.url #}
-        <img src="{{ image|imageSize(200, 200) }}">
-        <div>{{ image.caption }}</div>
-      </li>
-    {% endfor %}
-  </ul>
+  {% if item.website %}
+    <h5>
+      <a href="{{item.website}}" class="no-smoothstate" target="_blank">
+        {{item.website|replace('http://', '') }}
+      </a>
+    </h5>
+  {% endif %}
+
+  <hr>
 
   {{ item.wysiwyg_text|safe }}
+
+  {% if item.gallery %}
+    <hr>
+    {% for image in item.gallery %}
+      <div class="shadow mg-b-2">
+        <img src="{{ image.url }}">
+      </div>
+    {% endfor %}
+  {% endif %}
+
 
 {% endblock %}

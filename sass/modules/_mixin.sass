@@ -1,11 +1,17 @@
+//------------------------------------------------//
+// $FORCE HSL OUTPUT - Breaks on rgba($color,x) use
+//------------------------------------------------//
+@function hsl($h, $s, $l)
+  @return unquote('hsl(#{$h}, #{$s}, #{$l})')
+
+//------------------------------------------------//
+// $CLEARFIX
+//------------------------------------------------//
 =clearfix
   &:after
     content: ''
     display: table
     clear: both
-
-.clearfix
-  +clearfix
 
 //------------------------------------------------//
 // $IMAGE REPLACEMENT
