@@ -27,7 +27,7 @@
             <div class="transition transition--fall transition--fadein">
               <div class="js-media-hold nav-portfolio__media shadow aspect aspect--square"
                 data-video="{{item.video_medium.url}}"
-                data-img="{{ item.image.url }}"
+                data-img="{{ item.image|imageCrop(728, 728) }}"
                 data-title="{{ item.name }}"
                 data-id="{{item.name|replace(' ', '-', 'g') }}"
               >
